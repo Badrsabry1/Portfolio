@@ -107,17 +107,25 @@ header.scrolled{border-color:var(--line);background:rgba(5,9,12,.9)}
   border-radius:10px;
   transition:.22s ease;
 }
-.nav-links a:hover{
+.nav-links a:not(.nav-cta):hover{
   color:var(--text);
   background:rgba(255,255,255,.025);
 }
-.nav-links a.active{
+
+.nav-cta:hover{
+  color:#04110f!important;
+  background:var(--mint);
+  border-color:var(--mint);
+  box-shadow:0 10px 28px rgba(74,224,205,.16);
+  transform:translateY(-1px);
+}
+.nav-links a.active:not(.nav-cta){
   color:var(--mint);
   border-color:var(--line-strong);
   background:rgba(74,224,205,.07);
   box-shadow:0 0 22px rgba(74,224,205,.06);
 }
-.nav-links a.active:after{
+.nav-links a.active:not(.nav-cta):after{
   content:"";
   position:absolute;
   left:12px;
@@ -129,11 +137,23 @@ header.scrolled{border-color:var(--line);background:rgba(5,9,12,.9)}
 }
 .nav-cta{
   padding:10px 16px;
-  border:1px solid var(--line-strong);
+  border:1px solid var(--line);
   border-radius:10px;
-  color:var(--mint)!important;
-  background:rgba(74,224,205,.06);
+  color:var(--muted)!important;
+  background:rgba(255,255,255,.02);
+  box-shadow:none;
 }
+.nav-cta:focus-visible{
+  outline:2px solid var(--mint);
+  outline-offset:3px;
+}
+.nav-cta.active{
+  color:var(--muted)!important;
+  border-color:var(--line);
+  background:rgba(255,255,255,.02);
+  box-shadow:none;
+}
+.nav-cta.active:after{display:none;}
 .menu-btn{
   display:none;
   width:42px;
@@ -774,7 +794,7 @@ footer{
         <a class="btn btn-ghost" href="#contact">Start A Conversation</a>
       </div>
       <div class="hero-meta">
-        <div class="meta-item"><strong>7</strong><span>Projects Built</span></div>
+        <div class="meta-item"><strong>8</strong><span>Projects Built</span></div>
         <div class="meta-item"><strong>5</strong><span>Core Languages</span></div>
         <div class="meta-item"><strong>3</strong><span>Certifications</span></div>
       </div>
@@ -943,8 +963,21 @@ footer{
         </div>
       </article>
 
+      <article class="glass project reveal">
+        <div class="project-top"><span class="project-file">main.py</span><span class="project-index">07</span></div>
+        <div class="project-body">
+          <h3>EOG Signal Processing &amp; Classification</h3>
+          <p>A Python signal-processing pipeline for EOG eye-movement data, with custom preprocessing, DB4 wavelet feature extraction, statistical features, and from-scratch KNN and Decision Tree classifiers for movement recognition.</p>
+          <div class="chips"><span class="chip">Python</span><span class="chip">NumPy</span><span class="chip">Matplotlib</span><span class="chip">Signal Processing</span><span class="chip">Machine Learning</span></div>
+          <div class="project-actions">
+            <button class="code-viewer-btn" type="button" data-code-project="eog">View Source Code Here</button>
+            <a class="project-link project-github" href="https://github.com/Moharidy05/EOG-Signal_Processing" target="_blank" rel="noopener">View On GitHub ↗</a>
+          </div>
+        </div>
+      </article>
+
       <article class="glass project project-featured reveal">
-        <div class="project-top"><span class="project-file">FOS-main/</span><span class="project-index">07 · Featured</span></div>
+        <div class="project-top"><span class="project-file">FOS-main/</span><span class="project-index">08 · Featured</span></div>
         <div class="project-body">
           <div class="featured-label">Deep Systems Project</div>
           <h3>FOS Operating System</h3>
@@ -1074,28 +1107,44 @@ if(reduceMotion){
   type();
 }
 
-// Highlight the navigation item for the section currently in view.
-const navLinks = [...document.querySelectorAll('.nav-links a[href^="#"], .mobile-nav a[href^="#"]')];
+// Keep the navigation state predictable: only real section links can be active.
+// The "Let's Talk" CTA is intentionally never treated as an active section.
+const navLinks = [...document.querySelectorAll('.nav-links a[href^="#"]:not(.nav-cta), .mobile-nav a[href^="#"]:not(.nav-cta)')];
 const sections = [...document.querySelectorAll('main section[id]')];
+const headerOffset = () => header.getBoundingClientRect().height + 90;
 
 function setActiveNav(id){
   navLinks.forEach(link => {
-    link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+    link.classList.toggle('active', !!id && link.getAttribute('href') === `#${id}`);
   });
 }
 
-const navSpy = new IntersectionObserver(entries => {
-  const visible = entries
-    .filter(entry => entry.isIntersecting)
-    .sort((a,b) => b.intersectionRatio - a.intersectionRatio)[0];
-  if(visible) setActiveNav(visible.target.id);
-}, { rootMargin: '-35% 0px -55% 0px', threshold:[0,.15,.35,.6] });
-sections.forEach(section => navSpy.observe(section));
+function updateActiveNav(){
+  const marker = window.scrollY + headerOffset();
+  let current = '';
+
+  // No section is active while the user is still in the hero.
+  if(window.scrollY > 180){
+    sections.forEach(section => {
+      if(section.offsetTop <= marker) current = section.id;
+    });
+  }
+
+  setActiveNav(current);
+}
+
+window.addEventListener('scroll', updateActiveNav, {passive:true});
+window.addEventListener('resize', updateActiveNav);
+updateActiveNav();
 
 navLinks.forEach(link => link.addEventListener('click', () => {
-  const id = link.getAttribute('href').slice(1);
-  setActiveNav(id);
+  setActiveNav(link.getAttribute('href').slice(1));
 }));
+
+// Clicking the CTA scrolls to Contact, but it never gets an active/underline state.
+document.querySelectorAll('.nav-cta').forEach(link => {
+  link.addEventListener('click', () => setTimeout(updateActiveNav, 450));
+});
 
 const observer=new IntersectionObserver(entries=>{
   entries.forEach(entry=>{
@@ -1153,10 +1202,17 @@ const projectSourceInfo = {
   exam: {title:"Online Examination System — Source Code", subtitle:"Source preview will appear here when the project files are added to the portfolio.", available:false},
   heart: {title:"Heart Disease Prediction System — Source Code", subtitle:"Source preview will appear here when the project files are added to the portfolio.", available:false},
   event: {title:"Event Scheduling & Management System — Source Code", subtitle:"Source preview will appear here when the project files are added to the portfolio.", available:false},
-  sports: {title:"Sports News Website — Source Code", subtitle:"Source preview will appear here when the project files are added to the portfolio.", available:false}
+  sports: {title:"Sports News Website — Source Code", subtitle:"Source preview will appear here when the project files are added to the portfolio.", available:false},
+  eog: {
+    title:"EOG Signal Processing & Classification — Source Code",
+    subtitle:"main.py · loaded from the project's GitHub repository.",
+    available:true,
+    sourceUrl:"https://raw.githubusercontent.com/Moharidy05/EOG-Signal_Processing/refs/heads/main/main.py",
+    fileName:"main.py"
+  }
 };
 
-function openProjectSource(project){
+async function openProjectSource(project){
   const info = projectSourceInfo[project];
   codeModal.classList.add("open");
   codeModal.setAttribute("aria-hidden","false");
@@ -1164,9 +1220,35 @@ function openProjectSource(project){
   document.getElementById("codeModalTitle").textContent = info.title;
   document.querySelector(".code-panel-subtitle").textContent = info.subtitle;
 
-  if(info.available){
+  if(info.sourceUrl){
     codeFiles.style.display = "block";
     codeSource.style.display = "block";
+    codeFiles.innerHTML = "";
+    const btn = document.createElement("button");
+    btn.className = "code-file active";
+    btn.type = "button";
+    btn.textContent = info.fileName || "Source";
+    codeFiles.appendChild(btn);
+    codeText.textContent = "// Loading source code...";
+    try{
+      const response = await fetch(info.sourceUrl, {cache:"no-store"});
+      if(!response.ok) throw new Error(`HTTP ${response.status}`);
+      codeText.textContent = await response.text();
+    }catch(error){
+      codeText.textContent = "// Unable to load the source code preview right now.\n// Please use the GitHub button on the project card to open the repository.\n\n// Repository:\n// https://github.com/Moharidy05/EOG-Signal_Processing";
+    }
+  }else if(info.available){
+    codeFiles.style.display = "block";
+    codeSource.style.display = "block";
+    codeFiles.innerHTML = "";
+    fosSourceFiles.forEach((file,index) => {
+      const btn = document.createElement("button");
+      btn.className = "code-file";
+      btn.type = "button";
+      btn.textContent = file.name;
+      btn.addEventListener("click", () => showSource(index));
+      codeFiles.appendChild(btn);
+    });
     showSource(0);
   }else{
     codeFiles.style.display = "none";
