@@ -209,10 +209,13 @@ header.scrolled{border-color:var(--line);background:rgba(5,9,12,.9)}
   margin-bottom:20px;
 }
 .kicker:before{
-  content:"";
-  width:28px;
-  height:1px;
-  background:var(--mint);
+  content:">";
+  width:auto;
+  height:auto;
+  background:none;
+  color:var(--mint);
+  font-weight:800;
+  font-size:16px;
 }
 .hero h1{
   max-width:800px;
@@ -492,7 +495,7 @@ section{position:relative;padding:110px 0}
   text-transform:uppercase;
   letter-spacing:.08em;
 }
-.timeline-wrap{display:grid;grid-template-columns:1fr 1fr;gap:50px}
+.timeline-wrap{display:block}
 .timeline{border-left:1px solid var(--line);padding-left:28px}
 .timeline-item{position:relative;padding-bottom:34px}
 .timeline-item:last-child{padding-bottom:0}
@@ -511,18 +514,6 @@ section{position:relative;padding:110px 0}
 .timeline-date{font:10px var(--mono);color:var(--gold);text-transform:capitalize;margin-bottom:5px}
 .timeline-title{font-size:15px;font-weight:700;text-transform:capitalize}
 .timeline-sub{font-size:12px;color:var(--muted)}
-.langs{display:grid;gap:12px}
-.lang{
-  padding:18px 20px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  border:1px solid var(--line);
-  border-radius:14px;
-  background:rgba(255,255,255,.018);
-}
-.lang-name{font-weight:700;text-transform:capitalize}
-.lang-level{font:10px var(--mono);color:var(--mint)}
 .contact-box{
   width:100%;
 }
@@ -761,7 +752,7 @@ footer{
   <div class="container nav">
     <a class="brand" href="#home" aria-label="Badr Sabry Home">
       <span class="brand-mark">B</span>
-      <span class="brand-name">Badr<span>.dev</span></span>
+      <span class="brand-name">Badr Sabry Dabbous</span>
     </a>
     <nav class="nav-links" aria-label="Primary navigation">
       <a href="#about">About</a>
@@ -795,7 +786,7 @@ footer{
       </div>
       <div class="hero-meta">
         <div class="meta-item"><strong>8</strong><span>Projects Built</span></div>
-        <div class="meta-item"><strong>5</strong><span>Core Languages</span></div>
+        <div class="meta-item"><strong>8</strong><span>Programming Languages</span></div>
         <div class="meta-item"><strong>3</strong><span>Certifications</span></div>
       </div>
     </div>
@@ -848,7 +839,6 @@ footer{
         <div class="fact"><span class="fact-key">Focus</span><span class="fact-value">Software Engineering · AI/ML</span></div>
         <div class="fact"><span class="fact-key">Core Strength</span><span class="fact-value">Problem Solving & Algorithms</span></div>
         <div class="fact"><span class="fact-key">Location</span><span class="fact-value">Giza, Egypt</span></div>
-        <div class="fact"><span class="fact-key">Languages</span><span class="fact-value">Arabic · English · French · Turkish</span></div>
       </div>
     </div>
   </div>
@@ -864,7 +854,7 @@ footer{
       <p class="section-sub">A balanced toolkit across software engineering, data, AI, databases, and the web.</p>
     </div>
     <div class="skills-grid">
-      <article class="glass skill reveal"><div class="skill-number">01</div><h3>Programming</h3><p>Strong foundations in structured programming and object-oriented development.</p><div class="chips"><span class="chip">C++</span><span class="chip">C</span><span class="chip">Java</span><span class="chip">Python</span><span class="chip">C#</span></div></article>
+      <article class="glass skill reveal"><div class="skill-number">01</div><h3>Programming</h3><p>Strong foundations in structured programming and object-oriented development.</p><div class="chips"><span class="chip">C</span><span class="chip">C#</span><span class="chip">C++</span><span class="chip">Java</span><span class="chip">Scala</span><span class="chip">JavaScript</span><span class="chip">TypeScript</span><span class="chip">Python</span></div></article>
       <article class="glass skill reveal"><div class="skill-number">02</div><h3>Data & Databases</h3><p>Designing structured data models and writing reliable database logic.</p><div class="chips"><span class="chip">SQL</span><span class="chip">MySQL</span><span class="chip">Oracle</span><span class="chip">PL/SQL</span></div></article>
       <article class="glass skill reveal"><div class="skill-number">03</div><h3>AI & Machine Learning</h3><p>Building practical classification and prediction pipelines with clean preprocessing.</p><div class="chips"><span class="chip">Scikit-learn</span><span class="chip">Pandas</span><span class="chip">NumPy</span><span class="chip">SMOTE</span></div></article>
       <article class="glass skill reveal"><div class="skill-number">04</div><h3>Web Development</h3><p>Creating responsive interfaces with attention to usability and performance.</p><div class="chips"><span class="chip">HTML5</span><span class="chip">CSS3</span><span class="chip">JavaScript</span><span class="chip">Bootstrap</span></div></article>
@@ -976,10 +966,9 @@ footer{
         </div>
       </article>
 
-      <article class="glass project project-featured reveal">
-        <div class="project-top"><span class="project-file">FOS-main/</span><span class="project-index">08 · Featured</span></div>
+      <article class="glass project reveal">
+        <div class="project-top"><span class="project-file">FOS-main/</span><span class="project-index">08</span></div>
         <div class="project-body">
-          <div class="featured-label">Deep Systems Project</div>
           <h3>FOS Operating System</h3>
           <p>An educational operating-system kernel project covering memory management, paging, working sets, scheduling, synchronization, and user processes.</p>
           <div class="chips"><span class="chip">C</span><span class="chip">Operating Systems</span><span class="chip">Memory Management</span><span class="chip">Concurrency</span></div>
@@ -1008,11 +997,6 @@ footer{
         <div class="timeline-item"><div class="timeline-date">Summer 2025</div><div class="timeline-title">Full-Stack Development Certificate</div><div class="timeline-sub">End-to-end web development training.</div></div>
         <div class="timeline-item"><div class="timeline-date">Summer 2025</div><div class="timeline-title">ConnectX Organizing Certification</div><div class="timeline-sub">Student activity organizing at Ain Shams University.</div></div>
         <div class="timeline-item"><div class="timeline-date">Summer 2024</div><div class="timeline-title">Front-End Development Certificate</div><div class="timeline-sub">HTML, CSS, and JavaScript fundamentals.</div></div>
-      </div>
-      <div class="langs reveal">
-        <div class="lang"><span class="lang-name">English</span><span class="lang-level">B2 · Proficient</span></div>
-        <div class="lang"><span class="lang-name">French</span><span class="lang-level">B1 · Conversational</span></div>
-        <div class="lang"><span class="lang-name">Turkish</span><span class="lang-level">B1 · Conversational</span></div>
       </div>
     </div>
   </div>
