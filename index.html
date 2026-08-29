@@ -1,11 +1,12 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#071014">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="#071014" name="theme-color"/>
 <title>Badr Sabry Dabbous | Computer Science Portfolio</title>
-<meta name="description" content="Badr Sabry Dabbous — Computer Science student, developer, and problem solver focused on software engineering, data structures, AI/ML, databases, and modern web development.">
+<meta content="Badr Sabry Dabbous — Computer Science student, developer, and problem solver focused on software engineering, data structures, AI/ML, databases, and modern web development." name="description"/>
 <style>
 :root{
   --bg:#05090c;
@@ -425,6 +426,9 @@ section{position:relative;padding:110px 0}
 .project-body{padding:25px}
 .project h3{font-size:20px;line-height:1.25;text-transform:capitalize;margin-bottom:11px}
 .project p{color:var(--muted);font-size:13px;margin-bottom:20px}
+.project-role{margin:-4px 0 18px;padding:12px 13px;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.018);color:var(--muted);font-size:12px;line-height:1.55}
+.project-role strong{color:var(--text);font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.04em}
+.project-role .teamwork{color:var(--mint);font-family:var(--mono);font-size:10px}
 .project-bottom{display:flex;justify-content:space-between;align-items:center;gap:15px}
 .project-link{color:var(--mint);font:11px var(--mono);text-transform:capitalize}
 .project-link:hover{text-decoration:underline}
@@ -642,6 +646,12 @@ footer{
   backdrop-filter:blur(10px);
 }
 .code-modal.open{display:flex}
+.all-projects-modal .code-panel{width:min(1180px,100%);max-height:min(900px,94vh)}
+.all-projects-scroll{overflow:auto;padding:22px}
+.all-projects-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.all-projects-grid .project{display:block!important;opacity:1!important;transform:none!important}
+.all-projects-grid .project-extra{display:block!important}
+@media(max-width:760px){.all-projects-grid{grid-template-columns:1fr}.all-projects-scroll{padding:14px}}
 .code-panel{
   width:min(1100px,100%);
   max-height:min(820px,92vh);
@@ -745,303 +755,413 @@ footer{
 }
 .project-index{padding:5px 8px;border:1px solid var(--line);border-radius:999px;background:rgba(74,224,205,.035)}
 
+
+.linkedin-contact{align-items:center}
+.linkedin-qr-wrap{display:flex;align-items:center;gap:14px}
+.linkedin-qr{
+  width:88px;
+  height:88px;
+  padding:7px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:1px solid var(--line);
+  border-radius:12px;
+  background:#fff;
+  transition:.22s ease;
+}
+.linkedin-qr:hover{border-color:var(--line-strong);transform:translateY(-2px)}
+.linkedin-qr img{width:100%;height:100%;display:block}
+.linkedin-url{color:var(--mint);text-decoration:none}
+.linkedin-url:hover{text-decoration:underline}
+@media(max-width:640px){
+  .linkedin-contact{display:flex}
+  .linkedin-qr-wrap{width:100%;justify-content:flex-end}
+}
+@media(max-width:420px){
+  .linkedin-contact{display:block}
+  .linkedin-qr-wrap{justify-content:flex-start;margin-top:10px}
+}
+
+
+.projects-more{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin:28px 0 0}
+.projects-more-panel{padding:20px 0 80px}
+.projects-more .btn{display:inline-flex;align-items:center;justify-content:center}
+.projects-more .disabled{opacity:.55;pointer-events:none}
+
+.project-extra{display:none;}
+.contact-link.email-priority{border-color:rgba(74,224,205,.55);background:linear-gradient(90deg,rgba(74,224,205,.09),rgba(255,255,255,.018));box-shadow:0 0 0 1px rgba(74,224,205,.08),0 8px 24px rgba(0,0,0,.12);}
+.contact-link.email-priority .contact-label{color:var(--mint);}
+.contact-link.email-priority .contact-value{font-weight:700;}
+#projectControls{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;align-items:center;}
+
+
+
+
+/* ===== PROFILE CARD — real scrollable code area (desktop + mobile) ===== */
+.hero-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-card .code-window {
+  position: absolute;
+  inset: 18px;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.hero-card .code-window .window-bar {
+  flex: 0 0 48px;
+}
+
+.hero-card .code-window .code {
+  flex: 1 1 auto;
+  min-height: 0;
+  height: auto;
+  max-height: none;
+  overflow-y: auto !important;
+  overflow-x: auto !important;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  touch-action: pan-y pan-x;
+  scrollbar-width: auto;
+  box-sizing: border-box;
+  white-space: pre;
+  padding: 18px 24px 22px;
+  font-size: 12px;
+  line-height: 1.15 !important;
+}
+.hero-card .code-window .code > div {
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: inherit !important;
+}
+
+/* Keep the profile card comfortable on smaller screens */
+@media (max-width: 640px) {
+  .hero-card {
+    min-height: 350px;
+    height: 350px;
+  }
+
+  .hero-card .code-window {
+    inset: 12px;
+  }
+
+  .hero-card .code-window .code {
+    padding: 12px 14px 16px;
+    font-size: 10px;
+    line-height: 1.15 !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .hero-card {
+    min-height: 330px;
+    height: 330px;
+  }
+
+  .hero-card .code-window {
+    inset: 10px;
+  }
+
+  .hero-card .code-window .code {
+    font-size: 9.5px;
+    line-height: 1.15 !important;
+  }
+}
+
 </style>
 </head>
 <body>
 <header id="header">
-  <div class="container nav">
-    <a class="brand" href="#home" aria-label="Badr Sabry Home">
-      <span class="brand-mark">B</span>
-      <span class="brand-name">Badr Sabry Dabbous</span>
-    </a>
-    <nav class="nav-links" aria-label="Primary navigation">
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#experience">Experience</a>
-      <a class="nav-cta" href="#contact">Let's Talk</a>
-    </nav>
-    <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">☰</button>
-  </div>
-  <div class="container mobile-nav" id="mobileNav">
-    <a href="#about">About</a>
-    <a href="#skills">Skills</a>
-    <a href="#projects">Projects</a>
-    <a href="#experience">Experience</a>
-    <a href="#contact">Contact</a>
-  </div>
+<div class="container nav">
+<a aria-label="Badr Sabry Home" class="brand" href="#home">
+<span class="brand-mark">B</span>
+<span class="brand-name">Badr Sabry Dabbous</span>
+</a>
+<nav aria-label="Primary navigation" class="nav-links">
+<a href="#about">About</a>
+<a href="#skills">Skills</a>
+<a href="#projects">Projects</a>
+<a href="#experience">Experience</a>
+<a class="nav-cta" href="#contact">Let's Talk</a>
+</nav>
+<button aria-expanded="false" aria-label="Open menu" class="menu-btn" id="menuBtn">☰</button>
+</div>
+<div class="container mobile-nav" id="mobileNav">
+<a href="#about">About</a>
+<a href="#skills">Skills</a>
+<a href="#projects">Projects</a>
+<a href="#experience">Experience</a>
+<a href="#contact">Contact</a>
+</div>
 </header>
-
 <main id="home">
 <section class="hero">
-  <div class="container hero-grid">
-    <div class="reveal">
-      <div class="kicker">Computer Science Student · Ain Shams University</div>
-      <h1>Building <span class="accent">Smart</span> Systems With Clean Logic.</h1>
-      <div class="hero-subtitle"><span id="role"></span><span class="cursor">|</span></div>
-      <p class="hero-copy">I turn complex problems into structured software through data structures, object-oriented design, databases, machine learning, and modern front-end development.</p>
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="#projects">Explore My Work ↗</a>
-        <a class="btn btn-ghost" href="#contact">Start A Conversation</a>
-      </div>
-      <div class="hero-meta">
-        <div class="meta-item"><strong>8</strong><span>Projects Built</span></div>
-        <div class="meta-item"><strong>8</strong><span>Programming Languages</span></div>
-        <div class="meta-item"><strong>3</strong><span>Certifications</span></div>
-      </div>
-    </div>
-    <div class="hero-card reveal">
-      <div class="code-window">
-        <div class="window-bar">
-          <span class="window-dot"></span><span class="window-dot"></span><span class="window-dot"></span>
-          <span class="window-title">badr_profile.cpp</span>
-        </div>
-        <div class="code">
-          <div><span class="key">class</span> <span class="fn">BadrSabry</span> {</div>
-          <div>&nbsp;&nbsp;<span class="key">public</span>:</div>
-          <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="key">string</span> focus = <span class="str">"Software Engineering"</span>;</div>
-          <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="key">vector</span>&lt;<span class="key">string</span>&gt; strengths = {</div>
-          <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="str">"Data Structures"</span>,</div>
-          <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="str">"OOP & Databases"</span>,</div>
-          <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="str">"AI / Machine Learning"</span></div>
-          <div>&nbsp;&nbsp;&nbsp;&nbsp;};</div>
-          <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="key">bool</span> learning = <span class="key">true</span>;</div>
-          <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="key">bool</span> shipping = <span class="key">true</span>;</div>
-          <div>};</div>
-          <div class="code-card">
-            <div class="code-card-top"><span class="code-card-title">Current Learning Momentum</span><span class="status">88%</span></div>
-            <div class="progress"><span></span></div>
-          </div>
-          <div style="margin-top:20px"><span class="dim">→</span> Turning Ideas Into Reliable Software.</div>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="container hero-grid">
+<div class="reveal">
+<div class="kicker">Computer Science Student · Ain Shams University</div>
+<h1>Building <span class="accent">Smart</span> Systems With Clean Logic.</h1>
+<div class="hero-subtitle"><span id="role"></span><span class="cursor">|</span></div>
+<p class="hero-copy">I turn complex problems into structured software through data structures, object-oriented design, databases, machine learning, and modern front-end development.</p>
+<div class="hero-actions">
+<a class="btn btn-primary" href="#projects">Explore My Work ↗</a>
+<a class="btn btn-ghost" href="#contact">Start A Conversation</a>
+</div>
+<div class="hero-meta">
+<div class="meta-item"><strong>9</strong><span>Projects Built</span></div>
+<div class="meta-item"><strong>8</strong><span>Programming Languages</span></div>
+<div class="meta-item"><strong>3</strong><span>Certifications</span></div>
+</div>
+</div>
+<div class="hero-card reveal">
+<div class="code-window">
+<div class="window-bar">
+<span class="window-dot"></span><span class="window-dot"></span><span class="window-dot"></span>
+<span class="window-title">badr_profile.cpp</span>
+</div>
+<div class="code">
+<div><span class="key">class</span> <span class="fn">BadrSabry</span> {</div>
+<div>  <span class="key">public</span>:</div>
+<div>    <span class="key">string</span> focus = <span class="str">"Software Engineering"</span>;</div>
+<div>    <span class="key">vector</span>&lt;<span class="key">string</span>&gt; strengths = {</div>
+<div>      <span class="str">"Data Structures"</span>,</div>
+<div>      <span class="str">"OOP &amp; Databases"</span>,</div>
+<div>      <span class="str">"AI / Machine Learning"</span></div>
+<div>    };</div>
+<div>    <span class="key">string</span> university = <span class="str">"Ain Shams University"</span>;</div>
+<div>    <span class="key">int</span> projects_built = <span class="str">9</span>;</div>
+<div>    <span class="key">bool</span> learning = <span class="key">true</span>;</div>
+<div>    <span class="key">bool</span> collaborates = <span class="key">true</span>;</div>
+<div>    <span class="key">string</span> next_goal = <span class="str">"internship, Summer 2027"</span>;</div>
+<div>};</div>
+</div>
+</div>
+</div>
+</div>
 </section>
-
 <section id="about">
-  <div class="container">
-    <div class="section-head reveal">
-      <div>
-        <div class="section-kicker">About Me</div>
-        <h2 class="section-title">A Developer Who Likes Things That Make Sense.</h2>
-      </div>
-      <p class="section-sub">Strong fundamentals, practical projects, and a constant drive to understand how things work under the hood.</p>
-    </div>
-    <div class="about-layout">
-      <div class="glass about-main reveal">
-        <p>I'm a <strong>Computer Science student</strong> at the Faculty of Computer and Information Science, Ain Shams University, with a strong foundation in programming, OOP, databases, data structures, AI, and front-end development.</p>
-        <p>I enjoy solving problems from the inside out: choosing the right data structure, designing clean classes, building reliable database schemas, and turning the result into something people can actually use.</p>
-        <p>My portfolio reflects that mindset through C++, Java, Python, Oracle, and web projects. I learn fastest by building, testing, debugging, and shipping.</p>
-      </div>
-      <div class="glass fact-list reveal">
-        <div class="fact"><span class="fact-key">Education</span><span class="fact-value">Ain Shams University · 2023 – Present</span></div>
-        <div class="fact"><span class="fact-key">Focus</span><span class="fact-value">Software Engineering · AI/ML</span></div>
-        <div class="fact"><span class="fact-key">Core Strength</span><span class="fact-value">Problem Solving & Algorithms</span></div>
-        <div class="fact"><span class="fact-key">Location</span><span class="fact-value">Giza, Egypt</span></div>
-      </div>
-    </div>
-  </div>
+<div class="container">
+<div class="section-head reveal">
+<div>
+<div class="section-kicker">About Me</div>
+<h2 class="section-title">A Developer Who Likes Things That Make Sense.</h2>
+</div>
+<p class="section-sub">Strong fundamentals, practical projects, and a constant drive to understand how things work under the hood.</p>
+</div>
+<div class="about-layout">
+<div class="glass about-main reveal">
+<p>I'm a <strong>Computer Science student</strong> at the Faculty of Computer and Information Science, Ain Shams University, with a strong foundation in programming, OOP, databases, data structures, AI, and front-end development.</p>
+<p>I enjoy solving problems from the inside out: choosing the right data structure, designing clean classes, building reliable database schemas, and turning the result into something people can actually use.</p>
+<p>My portfolio reflects that mindset through C++, Java, Python, Oracle, and web projects. I learn fastest by building, testing, debugging, and shipping.</p>
+</div>
+<div class="glass fact-list reveal">
+<div class="fact"><span class="fact-key">Education</span><span class="fact-value">Ain Shams University · 2023 – Present</span></div>
+<div class="fact"><span class="fact-key">Focus</span><span class="fact-value">Software Engineering · AI/ML</span></div>
+<div class="fact"><span class="fact-key">Core Strength</span><span class="fact-value">Problem Solving &amp; Algorithms</span></div>
+<div class="fact"><span class="fact-key">Location</span><span class="fact-value">Giza, Egypt</span></div>
+</div>
+</div>
+</div>
 </section>
-
 <section id="skills">
-  <div class="container">
-    <div class="section-head reveal">
-      <div>
-        <div class="section-kicker">Technical Stack</div>
-        <h2 class="section-title">Tools I Build With.</h2>
-      </div>
-      <p class="section-sub">A balanced toolkit across software engineering, data, AI, databases, and the web.</p>
-    </div>
-    <div class="skills-grid">
-      <article class="glass skill reveal"><div class="skill-number">01</div><h3>Programming</h3><p>Strong foundations in structured programming and object-oriented development.</p><div class="chips"><span class="chip">C</span><span class="chip">C#</span><span class="chip">C++</span><span class="chip">Java</span><span class="chip">Scala</span><span class="chip">JavaScript</span><span class="chip">TypeScript</span><span class="chip">Python</span></div></article>
-      <article class="glass skill reveal"><div class="skill-number">02</div><h3>Data & Databases</h3><p>Designing structured data models and writing reliable database logic.</p><div class="chips"><span class="chip">SQL</span><span class="chip">MySQL</span><span class="chip">Oracle</span><span class="chip">PL/SQL</span></div></article>
-      <article class="glass skill reveal"><div class="skill-number">03</div><h3>AI & Machine Learning</h3><p>Building practical classification and prediction pipelines with clean preprocessing.</p><div class="chips"><span class="chip">Scikit-learn</span><span class="chip">Pandas</span><span class="chip">NumPy</span><span class="chip">SMOTE</span></div></article>
-      <article class="glass skill reveal"><div class="skill-number">04</div><h3>Web Development</h3><p>Creating responsive interfaces with attention to usability and performance.</p><div class="chips"><span class="chip">HTML5</span><span class="chip">CSS3</span><span class="chip">JavaScript</span><span class="chip">Bootstrap</span></div></article>
-      <article class="glass skill reveal"><div class="skill-number">05</div><h3>Engineering Mindset</h3><p>Breaking problems down, debugging systematically, and keeping solutions maintainable.</p><div class="chips"><span class="chip">Problem Solving</span><span class="chip">Algorithms</span><span class="chip">OOP</span><span class="chip">Debugging</span></div></article>
-      <article class="glass skill reveal"><div class="skill-number">06</div><h3>Professional Skills</h3><p>Collaborating with teams while communicating clearly and taking ownership.</p><div class="chips"><span class="chip">Leadership</span><span class="chip">Communication</span><span class="chip">Decision Making</span></div></article>
-    </div>
-  </div>
+<div class="container">
+<div class="section-head reveal">
+<div>
+<div class="section-kicker">Technical Stack</div>
+<h2 class="section-title">Tools I Build With.</h2>
+</div>
+<p class="section-sub">A balanced toolkit across software engineering, data, AI, databases, and the web.</p>
+</div>
+<div class="skills-grid">
+<article class="glass skill reveal"><div class="skill-number">01</div><h3>Programming</h3><p>Strong foundations in structured programming and object-oriented development.</p><div class="chips"><span class="chip">C</span><span class="chip">C#</span><span class="chip">C++</span><span class="chip">Java</span><span class="chip">Scala</span><span class="chip">JavaScript</span><span class="chip">TypeScript</span><span class="chip">Python</span></div></article>
+<article class="glass skill reveal"><div class="skill-number">02</div><h3>Data &amp; Databases</h3><p>Designing structured data models and writing reliable database logic.</p><div class="chips"><span class="chip">SQL</span><span class="chip">MySQL</span><span class="chip">Oracle</span><span class="chip">PL/SQL</span></div></article>
+<article class="glass skill reveal"><div class="skill-number">03</div><h3>AI &amp; Machine Learning</h3><p>Building practical classification and prediction pipelines with clean preprocessing.</p><div class="chips"><span class="chip">Scikit-learn</span><span class="chip">Pandas</span><span class="chip">NumPy</span><span class="chip">SMOTE</span></div></article>
+<article class="glass skill reveal"><div class="skill-number">04</div><h3>Web Development</h3><p>Creating responsive interfaces with attention to usability and performance.</p><div class="chips"><span class="chip">HTML5</span><span class="chip">CSS3</span><span class="chip">JavaScript</span><span class="chip">Bootstrap</span></div></article>
+<article class="glass skill reveal"><div class="skill-number">05</div><h3>Engineering Mindset</h3><p>Breaking problems down, debugging systematically, and keeping solutions maintainable.</p><div class="chips"><span class="chip">Problem Solving</span><span class="chip">Algorithms</span><span class="chip">OOP</span><span class="chip">Debugging</span></div></article>
+<article class="glass skill reveal"><div class="skill-number">06</div><h3>Professional Skills</h3><p>Collaborating with teams while communicating clearly and taking ownership.</p><div class="chips"><span class="chip">Leadership</span><span class="chip">Communication</span><span class="chip">Decision Making</span></div></article>
+</div>
+</div>
 </section>
-
 <section id="projects">
-  <div class="container">
-    <div class="section-head reveal">
-      <div>
-        <div class="section-kicker">Selected Work</div>
-        <h2 class="section-title">Projects With A Purpose.</h2>
-      </div>
-      <p class="section-sub">Real systems, practical engineering, and projects built to solve problems — not just fill a GitHub profile.</p>
-    </div>
-
-    <div class="projects-grid">
-      <article class="glass project reveal">
-        <div class="project-top"><span class="project-file">real_estate_portal.cpp</span><span class="project-index">01</span></div>
-        <div class="project-body">
-          <h3>Real Estate Portal System</h3>
-          <p>A C++ property platform built around data structures, custom search, sorting, filtering, and efficient retrieval.</p>
-          <div class="chips"><span class="chip">C++</span><span class="chip">Data Structures</span><span class="chip">Algorithms</span></div>
-          <div class="project-actions">
-            <button class="code-viewer-btn" type="button" data-code-project="real-estate">View Source Code Here</button>
-            <a class="project-link project-github" href="https://github.com/Badrsabry1" target="_blank" rel="noopener">View On GitHub ↗</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="glass project reveal">
-        <div class="project-top"><span class="project-file">train_reservation.cpp</span><span class="project-index">02</span></div>
-        <div class="project-body">
-          <h3>Train Reservation System</h3>
-          <p>A structured C++ booking system handling seat allocation, route planning, fare calculation, and reservation logic.</p>
-          <div class="chips"><span class="chip">C++</span><span class="chip">Booking Logic</span><span class="chip">Algorithms</span></div>
-          <div class="project-actions">
-            <button class="code-viewer-btn" type="button" data-code-project="train">View Source Code Here</button>
-            <a class="project-link project-github" href="https://github.com/Badrsabry1" target="_blank" rel="noopener">View On GitHub ↗</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="glass project reveal">
-        <div class="project-top"><span class="project-file">OnlineExam.java</span><span class="project-index">03</span></div>
-        <div class="project-body">
-          <h3>Online Examination System</h3>
-          <p>A Java application using inheritance, polymorphism, encapsulation, and clean class design for users, questions, and exams.</p>
-          <div class="chips"><span class="chip">Java</span><span class="chip">OOP</span><span class="chip">Software Design</span></div>
-          <div class="project-actions">
-            <button class="code-viewer-btn" type="button" data-code-project="exam">View Source Code Here</button>
-            <a class="project-link project-github" href="https://github.com/Badrsabry1" target="_blank" rel="noopener">View On GitHub ↗</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="glass project reveal">
-        <div class="project-top"><span class="project-file">heart_predict.py</span><span class="project-index">04</span></div>
-        <div class="project-body">
-          <h3>Heart Disease Prediction System</h3>
-          <p>A machine-learning pipeline for data cleaning, preprocessing, classification, and model evaluation using Python.</p>
-          <div class="chips"><span class="chip">Python</span><span class="chip">Scikit-learn</span><span class="chip">ML</span></div>
-          <div class="project-actions">
-            <button class="code-viewer-btn" type="button" data-code-project="heart">View Source Code Here</button>
-            <a class="project-link project-github" href="https://github.com/Badrsabry1" target="_blank" rel="noopener">View On GitHub ↗</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="glass project reveal">
-        <div class="project-top"><span class="project-file">event_schema.sql</span><span class="project-index">05</span></div>
-        <div class="project-body">
-          <h3>Event Scheduling &amp; Management System</h3>
-          <p>An Oracle and PL/SQL backend with a normalized schema for events, attendees, registration, and venue availability.</p>
-          <div class="chips"><span class="chip">Oracle</span><span class="chip">PL/SQL</span><span class="chip">Database Design</span></div>
-          <div class="project-actions">
-            <button class="code-viewer-btn" type="button" data-code-project="event">View Source Code Here</button>
-            <a class="project-link project-github" href="https://github.com/Badrsabry1" target="_blank" rel="noopener">View On GitHub ↗</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="glass project reveal">
-        <div class="project-top"><span class="project-file">sports_news/index.html</span><span class="project-index">06</span></div>
-        <div class="project-body">
-          <h3>Sports News Website</h3>
-          <p>A responsive front-end website focused on clean layouts, fast loading, consistent browsing, and mobile usability.</p>
-          <div class="chips"><span class="chip">HTML5</span><span class="chip">CSS3</span><span class="chip">JavaScript</span><span class="chip">Bootstrap</span></div>
-          <div class="project-actions">
-            <button class="code-viewer-btn" type="button" data-code-project="sports">View Source Code Here</button>
-            <a class="project-link project-github" href="https://github.com/Badrsabry1" target="_blank" rel="noopener">View On GitHub ↗</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="glass project reveal">
-        <div class="project-top"><span class="project-file">main.py</span><span class="project-index">07</span></div>
-        <div class="project-body">
-          <h3>EOG Signal Processing &amp; Classification</h3>
-          <p>A Python signal-processing pipeline for EOG eye-movement data, with custom preprocessing, DB4 wavelet feature extraction, statistical features, and from-scratch KNN and Decision Tree classifiers for movement recognition.</p>
-          <div class="chips"><span class="chip">Python</span><span class="chip">NumPy</span><span class="chip">Matplotlib</span><span class="chip">Signal Processing</span><span class="chip">Machine Learning</span></div>
-          <div class="project-actions">
-            <button class="code-viewer-btn" type="button" data-code-project="eog">View Source Code Here</button>
-            <a class="project-link project-github" href="https://github.com/Moharidy05/EOG-Signal_Processing" target="_blank" rel="noopener">View On GitHub ↗</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="glass project reveal">
-        <div class="project-top"><span class="project-file">FOS-main/</span><span class="project-index">08</span></div>
-        <div class="project-body">
-          <h3>FOS Operating System</h3>
-          <p>An educational operating-system kernel project covering memory management, paging, working sets, scheduling, synchronization, and user processes.</p>
-          <div class="chips"><span class="chip">C</span><span class="chip">Operating Systems</span><span class="chip">Memory Management</span><span class="chip">Concurrency</span></div>
-          <div class="project-actions">
-            <button class="code-viewer-btn" type="button" data-code-project="fos">View Source Code Here</button>
-            <a class="project-link project-github" href="https://github.com/Badrsabry1" target="_blank" rel="noopener">View On GitHub ↗</a>
-          </div>
-        </div>
-      </article>
-    </div>
-  </div>
+<div class="container">
+<div class="section-head reveal">
+<div>
+<div class="section-kicker">Selected Work</div>
+<h2 class="section-title">Projects With A Purpose.</h2>
+</div>
+<p class="section-sub">Real systems, practical engineering, and projects built to solve problems — not just fill a GitHub profile.</p>
+</div>
+<div class="projects-grid"><article class="glass project reveal">
+<div class="project-top"><span class="project-file">heart_predict.py</span><span class="project-index">01</span></div>
+<div class="project-body">
+<h3>Heart Disease Prediction System</h3>
+<p>A machine-learning pipeline for data cleaning, preprocessing, classification, and model evaluation using Python.</p>
+<div class="project-role"><strong>My Role:</strong> ML Pipeline &amp; Model Validation Engineer — handled data preprocessing, feature preparation, classifier training, and model evaluation to turn raw patient data into a structured prediction workflow.</div>
+<div class="chips"><span class="chip">Python</span><span class="chip">Scikit-learn</span><span class="chip">ML</span><span class="chip">Model Evaluation</span></div>
+<div class="project-actions">
+<button class="code-viewer-btn" data-code-project="heart" type="button">View Source Code Here</button>
+<a class="project-link project-github" href="https://github.com/Moharidy05/Heart-Disease-Prediction" rel="noopener" target="_blank">View On GitHub ↗</a>
+</div>
+</div>
+</article><article class="glass project reveal">
+<div class="project-top"><span class="project-file">real_estate_portal.cpp</span><span class="project-index">02</span></div>
+<div class="project-body">
+<h3>Real Estate Portal System</h3>
+<p>A C++ real-estate management system built with object-oriented design and STL containers for users, properties, approvals, and administration.</p>
+<div class="project-role"><strong>My Role:</strong> Core C++ / Data Structures developer — worked on property CRUD, approval/highlighting workflow, admin management, and unordered_map-based property storage. <span class="teamwork">Teamwork project.</span></div>
+<div class="chips"><span class="chip">C++</span><span class="chip">OOP</span><span class="chip">Data Structures</span><span class="chip">STL</span></div>
+<div class="project-actions">
+<button class="code-viewer-btn" data-code-project="real-estate" type="button">View Source Code Here</button>
+<a class="project-link project-github" href="https://github.com/Moharidy05/Property-Management-system" rel="noopener" target="_blank">View On GitHub ↗</a>
+</div>
+</div>
+</article></div><div class="projects-grid more-projects-grid" id="more-projects"><article class="glass project reveal project-extra" data-project-index="3">
+<div class="project-top"><span class="project-file">main.py</span><span class="project-index">03</span></div>
+<div class="project-body">
+<h3>EOG Signal Processing &amp; Classification</h3>
+<p>A Python-based EOG signal processing and eye-movement analysis project prepared for machine-learning workflows.</p>
+<div class="project-role"><strong>My Role:</strong> Signal Processing / ML developer — worked on EOG signal preprocessing, feature preparation, signal analysis, and building the processing pipeline for eye-movement classification. <span class="teamwork">Teamwork project.</span></div>
+<div class="chips"><span class="chip">Python</span><span class="chip">Signal Processing</span><span class="chip">EOG</span><span class="chip">Machine Learning</span></div>
+<div class="project-actions">
+<button class="code-viewer-btn" data-code-project="eog" type="button">View Source Code Here</button>
+<a class="project-link project-github" href="https://github.com/Moharidy05/EOG-Signal_Processing" rel="noopener" target="_blank">View On GitHub ↗</a>
+</div>
+</div>
+</article><article class="glass project reveal project-extra" data-project-index="4">
+<div class="project-top"><span class="project-file">train_reservation.cpp</span><span class="project-index">04</span></div>
+<div class="project-body">
+<h3>Train Reservation System</h3>
+<p>A C++ railway reservation system covering authentication, train schedules, ticket booking/cancellation, pricing, reports, and multiple payment methods.</p>
+<div class="project-role"><strong>My Role:</strong> Backend / Logic developer — worked on ticket booking &amp; cancellation, payment processing and validation, user authentication, and file-based reservation data handling. <span class="teamwork">Teamwork project.</span></div>
+<div class="chips"><span class="chip">C++</span><span class="chip">File Handling</span><span class="chip">Booking Logic</span><span class="chip">Payment Processing</span></div>
+<div class="project-actions">
+<button class="code-viewer-btn" data-code-project="train" type="button">View Source Code Here</button>
+<a class="project-link project-github" href="https://github.com/Moharidy05/Railway-Reservation-System" rel="noopener" target="_blank">View On GitHub ↗</a>
+</div>
+</div>
+</article><article class="glass project reveal project-extra" data-project-index="5">
+<div class="project-top"><span class="project-file">OnlineExam.java</span><span class="project-index">05</span></div>
+<div class="project-body">
+<h3>Online Examination System</h3>
+<p>A Java-based online examination application focused on object-oriented design for users, questions, exams, and assessment workflows.</p>
+<div class="project-role"><strong>My Role:</strong> OOP / Core Logic developer — contributed to class design, exam workflow, user/question handling, and the core application logic. <span class="teamwork">Teamwork project.</span></div>
+<div class="chips"><span class="chip">Java</span><span class="chip">OOP</span><span class="chip">Inheritance</span><span class="chip">Polymorphism</span></div>
+<div class="project-actions">
+<button class="code-viewer-btn" data-code-project="exam" type="button">View Source Code Here</button>
+<a class="project-link project-github" href="https://github.com/Abdelrahman249/Online-Examination-System" rel="noopener" target="_blank">View On GitHub ↗</a>
+</div>
+</div>
+</article><article class="glass project reveal project-extra" data-project-index="6">
+<div class="project-top"><span class="project-file">event_schema.sql</span><span class="project-index">06</span></div>
+<div class="project-body">
+<h3>Event Scheduling &amp; Management System</h3>
+<p>An Oracle and PL/SQL backend with a normalized schema for events, attendees, registration, and venue availability.</p>
+<div class="chips"><span class="chip">Oracle</span><span class="chip">PL/SQL</span><span class="chip">Database Design</span></div>
+<div class="project-actions">
+<button class="code-viewer-btn" data-code-project="event" type="button">View Source Code Here</button>
+<a class="project-link project-github" href="https://github.com/Badrsabry1" rel="noopener" target="_blank">View On GitHub ↗</a>
+</div>
+</div>
+</article><article class="glass project reveal project-extra" data-project-index="7">
+<div class="project-top"><span class="project-file">sports_news/index.html</span><span class="project-index">07</span></div>
+<div class="project-body">
+<h3>Sports News Website</h3>
+<p>A responsive front-end website focused on clean layouts, fast loading, consistent browsing, and mobile usability.</p>
+<div class="chips"><span class="chip">HTML5</span><span class="chip">CSS3</span><span class="chip">JavaScript</span><span class="chip">Bootstrap</span></div>
+<div class="project-actions">
+<button class="code-viewer-btn" data-code-project="sports" type="button">View Source Code Here</button>
+<a class="project-link project-github" href="https://github.com/Badrsabry1" rel="noopener" target="_blank">View On GitHub ↗</a>
+</div>
+</div>
+</article><article class="glass project reveal project-extra" data-project-index="8">
+<div class="project-top"><span class="project-file">main.py</span><span class="project-index">08</span></div>
+<div class="project-body">
+<h3>Digital Signal Processing</h3>
+<p>A Python signal-processing framework for loading, visualizing, transforming, filtering, resampling, and analyzing one-dimensional signals.</p>
+<div class="project-role"><strong>My Role:</strong> Signal Processing developer — worked on signal loading and visualization, signal comparison, addition and multiplication, time-domain analysis, convolution and correlation, DFT/FFT analysis, FIR filter design, filtering, and resampling workflows. <span class="teamwork">Teamwork project.</span></div>
+<div class="chips"><span class="chip">Python</span><span class="chip">NumPy</span><span class="chip">Signal Processing</span><span class="chip">FFT / DFT</span><span class="chip">FIR Filtering</span><span class="chip">Resampling</span></div>
+<div class="project-actions">
+<button class="code-viewer-btn" data-code-project="dsp" type="button">View Source Code Here</button>
+<a class="project-link project-github" href="https://github.com/Moharidy05/Digital-Signal-Processing" rel="noopener" target="_blank">View On GitHub ↗</a>
+</div>
+</div>
+</article><article class="glass project reveal project-extra" data-project-index="9">
+<div class="project-top"><span class="project-file">FOS-main/</span><span class="project-index">09</span></div>
+<div class="project-body">
+<h3>FOS Operating System</h3>
+<p>An educational operating-system kernel project implemented in C, covering memory management, paging, working sets, scheduling, synchronization, and user processes.</p>
+<div class="project-role"><strong>My Role:</strong> Kernel / Memory Management developer — worked in <strong>C</strong> on the <strong>User Heap</strong>, implementing and integrating <strong>malloc</strong> and <strong>free</strong>, heap allocation/deallocation logic, page mapping, page-fault handling, working-set management, and paging/replacement mechanisms. <span class="teamwork">Teamwork project.</span></div>
+<div class="chips"><span class="chip">C</span><span class="chip">Operating Systems</span><span class="chip">Memory Management</span><span class="chip">Paging</span><span class="chip">Concurrency</span></div>
+<div class="project-actions">
+<button class="code-viewer-btn" data-code-project="fos" type="button">View Source Code Here</button>
+<a class="project-link project-github" href="https://github.com/Badrsabry1" rel="noopener" target="_blank">View On GitHub ↗</a>
+</div>
+</div>
+</article></div><div class="projects-more reveal" id="projectControls"><button class="btn btn-primary" id="viewMoreProjects" type="button">View More ↓</button><button class="btn btn-ghost" id="viewLessProjects" style="display:none;" type="button">View Less ↑</button><button class="btn btn-ghost" id="viewAllProjects" type="button">View All Projects ↗</button></div>
+</div>
 </section>
-
 <section id="experience">
-  <div class="container">
-    <div class="section-head reveal">
-      <div>
-        <div class="section-kicker">Journey</div>
-        <h2 class="section-title">Learning, Building, Improving.</h2>
-      </div>
-      <p class="section-sub">Milestones that shaped the way I approach software development.</p>
-    </div>
-    <div class="timeline-wrap">
-      <div class="timeline reveal">
-        <div class="timeline-item"><div class="timeline-date">Summer 2026</div><div class="timeline-title">AI-Web Application Training</div><div class="timeline-sub">Connect X — AI and web application training.</div></div>
-        <div class="timeline-item"><div class="timeline-date">Summer 2025</div><div class="timeline-title">Full-Stack Development Certificate</div><div class="timeline-sub">End-to-end web development training.</div></div>
-        <div class="timeline-item"><div class="timeline-date">Summer 2025</div><div class="timeline-title">ConnectX Organizing Certification</div><div class="timeline-sub">Student activity organizing at Ain Shams University.</div></div>
-        <div class="timeline-item"><div class="timeline-date">Summer 2024</div><div class="timeline-title">Front-End Development Certificate</div><div class="timeline-sub">HTML, CSS, and JavaScript fundamentals.</div></div>
-      </div>
-    </div>
-  </div>
+<div class="container">
+<div class="section-head reveal">
+<div>
+<div class="section-kicker">Journey</div>
+<h2 class="section-title">Learning, Building, Improving.</h2>
+</div>
+<p class="section-sub">Milestones that shaped the way I approach software development.</p>
+</div>
+<div class="timeline-wrap">
+<div class="timeline reveal">
+<div class="timeline-item"><div class="timeline-date">Summer 2026</div><div class="timeline-title">AI-Web Application Training</div><div class="timeline-sub">Connect X — AI and web application training.</div></div>
+<div class="timeline-item"><div class="timeline-date">Summer 2025</div><div class="timeline-title">Full-Stack Development Certificate</div><div class="timeline-sub">End-to-end web development training.</div></div>
+<div class="timeline-item"><div class="timeline-date">Summer 2025</div><div class="timeline-title">ConnectX Organizing Certification</div><div class="timeline-sub">Student activity organizing at Ain Shams University.</div></div>
+<div class="timeline-item"><div class="timeline-date">Summer 2024</div><div class="timeline-title">Front-End Development Certificate</div><div class="timeline-sub">HTML, CSS, and JavaScript fundamentals.</div></div>
+</div>
+</div>
+</div>
 </section>
-
 <section id="contact">
-  <div class="container">
-    <div class="section-head reveal">
-      <div>
-        <div class="section-kicker">Contact</div>
-        <h2 class="section-title">Let's Build Something Worth Showing.</h2>
-      </div>
-      <p class="section-sub">Open to internships, software projects, technical collaborations, and opportunities to learn.</p>
-    </div>
-
-    <div class="glass contact-box contact-single reveal">
-      <div class="contact-main">
-        <h3>Have A Project In Mind?</h3>
-        <p>The fastest way to reach me is email. You can also find me on LinkedIn or GitHub.</p>
-        <div class="contact-links">
-          <a class="contact-link" href="https://mail.google.com/mail/?view=cm&fs=1&to=badrsabry98@gmail.com" target="_blank" rel="noopener">
-            <span class="contact-label">Email</span>
-            <span class="contact-value">badrsabry98@gmail.com</span>
-          </a>
-          <a class="contact-link" href="https://wa.me/201159144103" target="_blank" rel="noopener">
-            <span class="contact-label">Phone</span>
-            <span class="contact-value">+20 115 9144103</span>
-          </a>
-          <a class="contact-link" href="https://www.linkedin.com/in/badrsabry" target="_blank" rel="noopener">
-            <span class="contact-label">LinkedIn</span>
-            <span class="contact-value">linkedin.com/in/badrsabry</span>
-          </a>
-          <a class="contact-link" href="https://github.com/Badrsabry1" target="_blank" rel="noopener">
-            <span class="contact-label">GitHub</span>
-            <span class="contact-value">github.com/Badrsabry1</span>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="container">
+<div class="section-head reveal">
+<div>
+<div class="section-kicker">Contact</div>
+<h2 class="section-title">Let's Build Something Worth Showing.</h2>
+</div>
+<p class="section-sub">Open to internships, software projects, technical collaborations, and opportunities to learn.</p>
+</div>
+<div class="glass contact-box contact-single reveal">
+<div class="contact-main">
+<h3>Have A Project In Mind?</h3>
+<p>The fastest way to reach me is email. You can also find me on LinkedIn or GitHub.</p>
+<div class="contact-links">
+<a class="contact-link email-priority" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=badrsabrydabbous@gmail.com" rel="noopener" target="_blank">
+<span class="contact-label">Email</span>
+<span class="contact-value">badrsabrydabbous@gmail.com</span>
+</a>
+<div class="contact-link linkedin-contact">
+<span class="contact-label">LinkedIn</span>
+<div class="linkedin-qr-wrap">
+<a aria-label="Open LinkedIn profile" class="linkedin-qr" href="https://www.linkedin.com/in/badrsabry" rel="noopener" target="_blank">
+<img alt="LinkedIn QR Code" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQgAAAEIAQAAAACLjVdSAAABjUlEQVR4nO2ZQW4DMQwDh0X+/+XpQfLu9tRTHaFOAmQdgwdGkERRifzy+voN8EH8YwR6HwT6876dwnQP4gUIEDAgxBiv2ylM98WDigPpc4z37RSmb0AosfLkrTzeiHg9vwRJPXbzmIJ4QTcQIolGEly3Y5jui8dVHjHVPMx9O4XpHkSepRGoiuFRMVOYbkMEQlLRaM01B+dHpQUEQ0kMfYhjmO7LD+0qMV7ZApA4iukGBFqzuWDN7PYTwdPmdbSl1fr5l9L28bB4lL60ZekG0mbmyPlj5cdPa+tdRoflx1fLCktnOl+ADtAgppsQlsu3rVzQ5HIxk5j+PWI5e7p70C2kO8iR8wegiZ0j0Ba3hpJBTPcgulzANYcBt4MZxHQDIrbYPo1daiNUd1OYbs2PmtjX25QMk+P2p3EZWW9f5zWgHae3j/167H2h1Uxacacw3RcPrp2H0XK1lwSPYbod8fiToVcAOXM+7ddlbV2NBI/rp4/9ep9iTCo8Z/bTFpjupCtDzt2fTuDxQcxEfAP20dzFNAbzJQAAAABJRU5ErkJggg=="/>
+</a>
+<a class="contact-value linkedin-url" href="https://www.linkedin.com/in/badrsabry" rel="noopener" target="_blank">linkedin.com/in/badrsabry</a>
+</div>
+</div>
+<a class="contact-link" href="https://github.com/Badrsabry1" rel="noopener" target="_blank">
+<span class="contact-label">GitHub</span>
+<span class="contact-value">github.com/Badrsabry1</span>
+</a>
+</div>
+</div>
+</div>
+</div>
 </section>
 </main>
-
-<footer>© <span id="year"></span> Badr Sabry Dabbous · Designed & Built With Purpose.</footer>
-
+<footer>© <span id="year"></span> Badr Sabry Dabbous · Designed &amp; Built With Purpose.</footer>
 <script>
 const header=document.getElementById("header");
 const menuBtn=document.getElementById("menuBtn");
@@ -1141,21 +1261,32 @@ const observer=new IntersectionObserver(entries=>{
 
 document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
 </script>
-
-<div class="code-modal" id="codeModal" aria-hidden="true">
-  <div class="code-panel" role="dialog" aria-modal="true" aria-labelledby="codeModalTitle">
-    <div class="code-panel-head">
-      <div>
-        <div class="code-panel-title" id="codeModalTitle">FOS Operating System — Source Code</div>
-        <div class="code-panel-subtitle">Browse the project files without leaving this page</div>
-      </div>
-      <button class="code-close" id="codeClose" type="button" aria-label="Close source code">×</button>
-    </div>
-    <div class="code-layout">
-      <div class="code-files" id="codeFiles"></div>
-      <div class="code-source" id="codeSource"><pre id="codeText"></pre></div>
-    </div>
-  </div>
+<div aria-hidden="true" class="code-modal" id="codeModal">
+<div aria-labelledby="codeModalTitle" aria-modal="true" class="code-panel" role="dialog">
+<div class="code-panel-head">
+<div>
+<div class="code-panel-title" id="codeModalTitle">FOS Operating System — Source Code</div>
+<div class="code-panel-subtitle">Browse the project files without leaving this page</div>
+</div>
+<button aria-label="Close source code" class="code-close" id="codeClose" type="button">×</button>
+</div>
+<div class="code-layout">
+<div class="code-files" id="codeFiles"></div>
+<div class="code-source" id="codeSource"><pre id="codeText"></pre></div>
+</div>
+</div>
+</div>
+<div aria-hidden="true" class="code-modal all-projects-modal" id="allProjectsModal">
+<div aria-labelledby="allProjectsModalTitle" aria-modal="true" class="code-panel" role="dialog">
+<div class="code-panel-head">
+<div>
+<div class="code-panel-title" id="allProjectsModalTitle">All Projects</div>
+<div class="code-panel-subtitle">Browse the complete project collection without leaving this page</div>
+</div>
+<button aria-label="Close all projects" class="code-close" id="allProjectsClose" type="button">×</button>
+</div>
+<div class="all-projects-scroll"><div class="all-projects-grid" id="allProjectsGrid"></div></div>
+</div>
 </div>
 <script>
 const fosSourceFiles = [{"name": "kern/mem/working_set_manager.c", "code": "/*\n * working_set_manager.c\n *\n *  Created on: Oct 11, 2022\n *      Author: HP\n */\n\n#include <kern/trap/fault_handler.h>\n#include <kern/disk/pagefile_manager.h>\n#include \"kheap.h\"\n#include \"memory_manager.h\"\n\n///============================================================================================\n/// Dealing with environment working set\n#if USE_KHEAP\n//==============================\n// [1] CREATE A NEW WS ELEMENT\n//==============================\n//If failed to create a new one, kernel should panic()!\ninline struct WorkingSetElement* env_page_ws_list_create_element(struct Env* e, uint32 virtual_address)\n{\n\tassert(virtual_address >= 0 && virtual_address < USER_TOP);\n\tstruct WorkingSetElement *wse = kmalloc(sizeof(struct WorkingSetElement)) ;\n\tif (wse == NULL)\n\t{\n\t\tpanic(\"can't create a new WS element\");\n\t}\n\twse->virtual_address = ROUNDDOWN(virtual_address,PAGE_SIZE);\n\twse->sweeps_counter = 0;\n\twse->time_stamp = 0x00000000;\n\treturn wse;\n}\ninline void env_page_ws_invalidate(struct Env* e, uint32 virtual_address)\n{\n\tif (isPageReplacmentAlgorithmLRU(PG_REP_LRU_LISTS_APPROX))\n\t{\n\t\tbool found = 0;\n\t\tstruct WorkingSetElement *ptr_WS_element = NULL;\n\t\tLIST_FOREACH(ptr_WS_element, &(e->ActiveList))\n\t\t{\n\t\t\tif(ROUNDDOWN(ptr_WS_element->virtual_address,PAGE_SIZE) == ROUNDDOWN(virtual_address,PAGE_SIZE))\n\t\t\t{\n\t\t\t\tstruct WorkingSetElement* ptr_tmp_WS_element = LIST_FIRST(&(e->SecondList));\n\t\t\t\tunmap_frame(e->env_page_directory, ptr_WS_element->virtual_address);\n\n\t\t\t\tLIST_REMOVE(&(e->ActiveList), ptr_WS_element);\n\n\t\t\t\t/*EDIT*/kfree(ptr_WS_element);\n\n\t\t\t\tif(ptr_tmp_WS_element != NULL)\n\t\t\t\t{\n\t\t\t\t\tLIST_REMOVE(&(e->SecondList), ptr_tmp_WS_element);\n\t\t\t\t\tLIST_INSERT_TAIL(&(e->ActiveList), ptr_tmp_WS_element);\n\t\t\t\t\tpt_set_page_permissions(e->env_page_directory, ptr_tmp_WS_element->virtual_address, PERM_PRESENT, 0);\n\t\t\t\t}\n\t\t\t\tfound = 1;\n\t\t\t\tbreak;\n\t\t\t}\n\t\t}\n\n\t\tif (!found)\n\t\t{\n\t\t\tptr_WS_element = NULL;\n\t\t\tLIST_FOREACH(ptr_WS_element, &(e->SecondList))\n\t\t\t{\n\t\t\t\tif(ROUNDDOWN(ptr_WS_element->virtual_address,PAGE_SIZE) == ROUNDDOWN(virtual_address,PAGE_SIZE))\n\t\t\t\t{\n\t\t\t\t\tunmap_frame(e->env_page_directory, ptr_WS_element->virtual_address);\n\t\t\t\t\tLIST_REMOVE(&(e->SecondList), ptr_WS_element);\n\n\t\t\t\t\tkfree(ptr_WS_element);\n\n\t\t\t\t\t/*EDIT*/break;\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n\telse\n\t{\n\t\tstruct WorkingSetElement *wse;\n\t\tLIST_FOREACH(wse, &(e->page_WS_list))\n\t\t{\n\t\t\tif(ROUNDDOWN(wse->virtual_address,PAGE_SIZE) == ROUNDDOWN(virtual_address,PAGE_SIZE))\n\t\t\t{\n\t\t\t\tunmap_frame(e->env_page_directory, wse->virtual_address);\n\n\t\t\t\tif (e->page_last_WS_element == wse)\n\t\t\t\t{\n\t\t\t\t\te->page_last_WS_element = LIST_NEXT(wse);\n\t\t\t\t}\n\t\t\t\tLIST_REMOVE(&(e->page_WS_list), wse);\n\n\t\t\t\tkfree(wse);\n\n\t\t\t\tbreak;\n\t\t\t}\n\t\t}\n\t}\n}\nvoid env_page_ws_print(struct Env *e)\n{\n\tif (isPageReplacmentAlgorithmLRU(PG_REP_LRU_LISTS_APPROX))\n\t{\n\t\tint i = 0;\n\t\tcprintf(\"ActiveList:\\n============\\n\") ;\n\t\tstruct WorkingSetElement * ptr_WS_element ;\n\t\tLIST_FOREACH(ptr_WS_element, &(e->ActiveList))\n\t\t{\n\t\t\tcprintf(\"%d:\t%x\\n\", i++, ptr_WS_element->virtual_address);\n\t\t}\n\t\tcprintf(\"\\nSecondList:\\n============\\n\") ;\n\t\tLIST_FOREACH(ptr_WS_element, &(e->SecondList))\n\t\t{\n\t\t\tcprintf(\"%d:\t%x\\n\", i++, ptr_WS_element->virtual_address);\n\t\t}\n\t}\n\telse\n\t{\n\t\tuint32 i=0;\n\t\tcprintf(\"PAGE WS:\\n\");\n\t\tstruct WorkingSetElement *wse = NULL;\n\t\tLIST_FOREACH(wse, &(e->page_WS_list))\n\t\t{\n\t\t\tuint32 virtual_address = wse->virtual_address;\n\t\t\tuint32 time_stamp = wse->time_stamp;\n\n\t\t\tuint32 perm = pt_get_page_permissions(e->env_page_directory, virtual_address) ;\n\t\t\tchar isModified = ((perm&PERM_MODIFIED) ? 1 : 0);\n\t\t\tchar isUsed= ((perm&PERM_USED) ? 1 : 0);\n\t\t\tchar isBuffered= ((perm&PERM_BUFFERED) ? 1 : 0);\n\n\t\t\tcprintf(\"%d: %x\",i, virtual_address);\n\n\t\t\t//2021\n\t\t\tcprintf(\", used= %d, modified= %d, buffered= %d, time stamp= %x, sweeps_cnt= %d\",\n\t\t\t\t\tisUsed, isModified, isBuffered, time_stamp, wse->sweeps_counter) ;\n\n\t\t\tif(wse == e->page_last_WS_element)\n\t\t\t{\n\t\t\t\tcprintf(\" <--\");\n\t\t\t}\n\t\t\tcprintf(\"\\n\");\n\t\t\ti++;\n\t\t}\n\t\tfor (; i < e->page_WS_max_size; ++i)\n\t\t{\n\t\t\tcprintf(\"EMPTY LOCATION\\n\");\n\t\t}\n\t}\n}\n#else\ninline uint32 env_page_ws_get_size(struct Env *e)\n{\n\tint i=0, counter=0;\n\tfor(;i<e->page_WS_max_size; i++) if(e->ptr_pageWorkingSet[i].empty == 0) counter++;\n\treturn counter;\n}\n\ninline void env_page_ws_invalidate(struct Env* e, uint32 virtual_address)\n{\n\tint i=0;\n\tfor(;i<e->page_WS_max_size; i++)\n\t{\n\t\tif(ROUNDDOWN(e->ptr_pageWorkingSet[i].virtual_address,PAGE_SIZE) == ROUNDDOWN(virtual_address,PAGE_SIZE))\n\t\t{\n\t\t\tenv_page_ws_clear_entry(e, i);\n\t\t\tbreak;\n\t\t}\n\t}\n}\n\ninline void env_page_ws_set_entry(struct Env* e, uint32 entry_index, uint32 virtual_address)\n{\n\tassert(entry_index >= 0 && entry_index < e->page_WS_max_size);\n\tassert(virtual_address >= 0 && virtual_address < USER_TOP);\n\te->ptr_pageWorkingSet[entry_index].virtual_address = ROUNDDOWN(virtual_address,PAGE_SIZE);\n\te->ptr_pageWorkingSet[entry_index].empty = 0;\n\n\te->ptr_pageWorkingSet[entry_index].time_stamp = 0x00000000;\n\t//e->ptr_pageWorkingSet[entry_index].time_stamp = time;\n\treturn;\n}\n\ninline void env_page_ws_clear_entry(struct Env* e, uint32 entry_index)\n{\n\tassert(entry_index >= 0 && entry_index < (e->page_WS_max_size));\n\te->ptr_pageWorkingSet[entry_index].virtual_address = 0;\n\te->ptr_pageWorkingSet[entry_index].empty = 1;\n\te->ptr_pageWorkingSet[entry_index].time_stamp = 0;\n}\n\ninline uint32 env_page_ws_get_virtual_address(struct Env* e, uint32 entry_index)\n{\n\tassert(entry_index >= 0 && entry_index < (e->page_WS_max_size));\n\treturn ROUNDDOWN(e->ptr_pageWorkingSet[entry_index].virtual_address,PAGE_SIZE);\n}\n\ninline uint32 env_page_ws_get_time_stamp(struct Env* e, uint32 entry_index)\n{\n\tassert(entry_index >= 0 && entry_index < (e->page_WS_max_size));\n\treturn e->ptr_pageWorkingSet[entry_index].time_stamp;\n}\n\ninline uint32 env_page_ws_is_entry_empty(struct Env* e, uint32 entry_index)\n{\n\treturn e->ptr_pageWorkingSet[entry_index].empty;\n}\n\nvoid env_page_ws_print(struct Env *e)\n{\n\tif (isPageReplacmentAlgorithmLRU(PG_REP_LRU_LISTS_APPROX))\n\t{\n\t\tint i = 0;\n\t\tcprintf(\"ActiveList:\\n============\\n\") ;\n\t\tstruct WorkingSetElement * ptr_WS_element ;\n\t\tLIST_FOREACH(ptr_WS_element, &(e->ActiveList))\n\t\t{\n\t\t\tcprintf(\"%d:\t%x\\n\", i++, ptr_WS_element->virtual_address);\n\t\t}\n\t\tcprintf(\"\\nSecondList:\\n============\\n\") ;\n\t\tLIST_FOREACH(ptr_WS_element, &(e->SecondList))\n\t\t{\n\t\t\tcprintf(\"%d:\t%x\\n\", i++, ptr_WS_element->virtual_address);\n\t\t}\n\t}\n\telse\n\t{\n\t\tuint32 i;\n\t\tcprintf(\"PAGE WS:\\n\");\n\t\tfor(i=0; i< (e->page_WS_max_size); i++ )\n\t\t{\n\t\t\tif (e->ptr_pageWorkingSet[i].empty)\n\t\t\t{\n\t\t\t\tcprintf(\"EMPTY LOCATION\");\n\t\t\t\tif(i==e->page_last_WS_index )\n\t\t\t\t{\n\t\t\t\t\tcprintf(\"\t\t<--\");\n\t\t\t\t}\n\t\t\t\tcprintf(\"\\n\");\n\t\t\t\tcontinue;\n\t\t\t}\n\t\t\tuint32 virtual_address = e->ptr_pageWorkingSet[i].virtual_address;\n\t\t\tuint32 time_stamp = e->ptr_pageWorkingSet[i].time_stamp;\n\n\t\t\tuint32 perm = pt_get_page_permissions(e->env_page_directory, virtual_address) ;\n\t\t\tchar isModified = ((perm&PERM_MODIFIED) ? 1 : 0);\n\t\t\tchar isUsed= ((perm&PERM_USED) ? 1 : 0);\n\t\t\tchar isBuffered= ((perm&PERM_BUFFERED) ? 1 : 0);\n\n\n\t\t\tcprintf(\"address @ %d = %x\",i, e->ptr_pageWorkingSet[i].virtual_address);\n\n\t\t\t//2021\n\t\t\tcprintf(\", used= %d, modified= %d, buffered= %d, time stamp= %x, sweeps_cnt= %d\", isUsed, isModified, isBuffered, time_stamp, e->ptr_pageWorkingSet[i].sweeps_counter) ;\n\n\t\t\tif(i==e->page_last_WS_index )\n\t\t\t{\n\t\t\t\tcprintf(\" <--\");\n\t\t\t}\n\t\t\tcprintf(\"\\n\");\n\t\t}\n\t}\n}\n#endif\n// Table Working Set =========================================================\n\nvoid env_table_ws_print(struct Env *e)\n{\n\tuint32 i;\n\tcprintf(\"---------------------------------------------------\\n\");\n\tcprintf(\"TABLE WS:\\n\");\n\tfor(i=0; i< __TWS_MAX_SIZE; i++ )\n\t{\n\t\tif (e->__ptr_tws[i].empty)\n\t\t{\n\t\t\tcprintf(\"EMPTY LOCATION\");\n\t\t\tif(i==e->table_last_WS_index )\n\t\t\t{\n\t\t\t\tcprintf(\"\t\t<--\");\n\t\t\t}\n\t\t\tcprintf(\"\\n\");\n\t\t\tcontinue;\n\t\t}\n\t\tuint32 virtual_address = e->__ptr_tws[i].virtual_address;\n\t\tcprintf(\"env address at %d = %x\",i, e->__ptr_tws[i].virtual_address);\n\n\t\tcprintf(\", used bit = %d, time stamp = %d\", pd_is_table_used(e->env_page_directory, virtual_address), e->__ptr_tws[i].time_stamp);\n\t\tif(i==e->table_last_WS_index )\n\t\t{\n\t\t\tcprintf(\" <--\");\n\t\t}\n\t\tcprintf(\"\\n\");\n\t}\n}\n\ninline uint32 env_table_ws_get_size(struct Env *e)\n{\n\tint i=0, counter=0;\n\tfor(;i<__TWS_MAX_SIZE; i++) if(e->__ptr_tws[i].empty == 0) counter++;\n\treturn counter;\n}\n\ninline void env_table_ws_invalidate(struct Env* e, uint32 virtual_address)\n{\n\tint i=0;\n\tfor(;i<__TWS_MAX_SIZE; i++)\n\t{\n\t\tif(ROUNDDOWN(e->__ptr_tws[i].virtual_address,PAGE_SIZE*1024) == ROUNDDOWN(virtual_address,PAGE_SIZE*1024))\n\t\t{\n\t\t\tenv_table_ws_clear_entry(e, i);\n\t\t\tbreak;\n\t\t}\n\t}\n}\n\ninline void env_table_ws_set_entry(struct Env* e, uint32 entry_index, uint32 virtual_address)\n{\n\tassert(entry_index >= 0 && entry_index < __TWS_MAX_SIZE);\n\tassert(virtual_address >= 0 && virtual_address < USER_TOP);\n\te->__ptr_tws[entry_index].virtual_address = ROUNDDOWN(virtual_address,PAGE_SIZE*1024);\n\te->__ptr_tws[entry_index].empty = 0;\n\n\t//e->__ptr_tws[entry_index].time_stamp = time;\n\te->__ptr_tws[entry_index].time_stamp = 0x00000000;\n\treturn;\n}\n\ninline void env_table_ws_clear_entry(struct Env* e, uint32 entry_index)\n{\n\tassert(entry_index >= 0 && entry_index < __TWS_MAX_SIZE);\n\te->__ptr_tws[entry_index].virtual_address = 0;\n\te->__ptr_tws[entry_index].empty = 1;\n\te->__ptr_tws[entry_index].time_stamp = 0;\n}\n\ninline uint32 env_table_ws_get_virtual_address(struct Env* e, uint32 entry_index)\n{\n\tassert(entry_index >= 0 && entry_index < __TWS_MAX_SIZE);\n\treturn ROUNDDOWN(e->__ptr_tws[entry_index].virtual_address,PAGE_SIZE*1024);\n}\n\n\ninline uint32 env_table_ws_get_time_stamp(struct Env* e, uint32 entry_index)\n{\n\tassert(entry_index >= 0 && entry_index < __TWS_MAX_SIZE);\n\treturn e->__ptr_tws[entry_index].time_stamp;\n}\n\ninline uint32 env_table_ws_is_entry_empty(struct Env* e, uint32 entry_index)\n{\n\treturn e->__ptr_tws[entry_index].empty;\n}\n\n///=================================================================================================\n///=================================================================================================\n///=================================================================================================\n///=================================================================================================\n\n// Change WS Sizes For PRIORITY  =========================================================\n\nvoid cut_paste_WS(struct WorkingSetElement* newWS, int newSize, struct Env* e)\n{\n\tpanic(\"not handled yet\");\n}\n\nvoid double_WS_Size(struct Env* e, int isOneTimeOnly)\n{\n\tpanic(\"not handled yet\");\n}\n\nvoid half_WS_Size(struct Env* e, int isImmidiate)\n{\n\tpanic(\"not handled yet\");\n}\n\n\n"}, {"name": "kern/mem/memory_manager.c", "code": "/* See COPYRIGHT for copyright information. */\n/*\nKEY WORDS\n==========\nMACROS: \tSTATIC_KERNEL_PHYSICAL_ADDRESS, STATIC_KERNEL_VIRTUAL_ADDRESS, PDX, PTX, CONSTRUCT_ENTRY, EXTRACT_ADDRESS, ROUNDUP, ROUNDDOWN, LIST_INIT, LIST_INSERT_HEAD, LIST_FIRST, LIST_REMOVE\nCONSTANTS:\tPAGE_SIZE, PERM_PRESENT, PERM_WRITEABLE, PERM_USER, KERNEL_STACK_TOP, KERNEL_STACK_SIZE, KERNEL_BASE, READ_ONLY_FRAMES_INFO, PHYS_IO_MEM, PHYS_EXTENDED_MEM, E_NO_MEM\nVARIABLES:\tptr_free_mem, ptr_page_directory, phys_page_directory, phys_stack_bottom, Frame_Info, frames_info, free_frame_list, references, prev_next_info, size_of_extended_mem, number_of_frames, ptr_frame_info ,create, perm, va\nFUNCTIONS:\tto_physical_address, get_frame_info, tlb_invalidate\n=====================================================================================================================================================================================================\n */\n\n#include \"memory_manager.h\"\n\n#include <inc/x86.h>\n#include <inc/mmu.h>\n#include <inc/error.h>\n#include <inc/string.h>\n#include <inc/assert.h>\n\n#include <kern/trap/trap.h>\n\n#include <kern/proc/user_environment.h>\n#include <kern/cpu/kclock.h>\n#include <kern/cpu/cpu.h>\n#include <kern/cpu/sched.h>\n#include <kern/disk/pagefile_manager.h>\n#include \"kheap.h\"\n\n\n\n\nvoid tlb_invalidate(uint32 *ptr_page_directory, void *virtual_address)\n{\n\t// Flush the entry only if we're modifying the current address space.\n\t/*2025*/ //check is added\n\tstruct Env* e = get_cpu_proc();\n\tif (!e || e->env_page_directory == ptr_page_directory)\n\t\tinvlpg(virtual_address);\n}\n\n///******************************* MAPPING USER SPACE *******************************\n\n// --------------------------------------------------------------\n// Tracking of physical frames.\n// The 'frames_info' array has one 'struct Frame_Info' entry per physical frame.\n// frames_info are reference counted, and free frames are kept on a linked list.\n// --------------------------------------------------------------\n\n// Initialize paging structure and free_frame_list.\n// After this point, ONLY use the functions below\n// to allocate and deallocate physical memory via the free_frame_list,\n// and NEVER use boot_allocate_space() or the related boot-time functions above.\n//\n\nextern void initialize_disk_page_file();\nvoid initialize_paging()\n{\n\t// The example code here marks all frames_info as free.\n\t// However this is not truly the case.  What memory is free?\n\t//  1) Mark frame 0 as in use.\n\t//     This way we preserve the real-mode IDT and BIOS structures\n\t//     in case we ever need them.  (Currently we don't, but...)\n\t//  2) Mark the rest of base memory as free.\n\t//  3) Then comes the IO hole [PHYS_IO_MEM, PHYS_EXTENDED_MEM).\n\t//     Mark it as in use so that it can never be allocated.\n\t//  4) Then extended memory [PHYS_EXTENDED_MEM, ...).\n\t//     Some of it is in use, some is free. Where is the kernel?\n\t//     Which frames are used for page tables and other data structures?\n\t//\n\t// Change the code to reflect this.\n\tint i;\n\tLIST_INIT(&MemFrameLists.free_frame_list);\n\tLIST_INIT(&MemFrameLists.modified_frame_list);\n\n\t//Initialize the corresponding lock\n\tinit_kspinlock(&MemFrameLists.mfllock, \"Frame Info Lock\");\n\n\tframes_info[0].references = 1;\n\tframes_info[1].references = 1;\n\tframes_info[2].references = 1;\n\tptr_zero_page = (uint8*) KERNEL_BASE+PAGE_SIZE;\n\tptr_temp_page = (uint8*) KERNEL_BASE+2*PAGE_SIZE;\n\ti =0;\n\tfor(;i<1024; i++)\n\t{\n\t\tptr_zero_page[i]=0;\n\t\tptr_temp_page[i]=0;\n\t}\n\n\tint range_end = ROUNDUP(PHYS_IO_MEM,PAGE_SIZE);\n\n\tfor (i = 3; i < range_end/PAGE_SIZE; i++)\n\t{\n\n\t\tinitialize_frame_info(&(frames_info[i]));\n\t\t//frames_info[i].references = 0;\n\n\t\tLIST_INSERT_HEAD(&MemFrameLists.free_frame_list, &frames_info[i]);\n\t}\n\n\tfor (i = PHYS_IO_MEM/PAGE_SIZE ; i < PHYS_EXTENDED_MEM/PAGE_SIZE; i++)\n\t{\n\t\tframes_info[i].references = 1;\n\t}\n\n\trange_end = ROUNDUP(STATIC_KERNEL_PHYSICAL_ADDRESS(ptr_free_mem), PAGE_SIZE);\n\n\tfor (i = PHYS_EXTENDED_MEM/PAGE_SIZE ; i < range_end/PAGE_SIZE; i++)\n\t{\n\t\tframes_info[i].references = 1;\n\t}\n\n\tfor (i = range_end/PAGE_SIZE ; i < number_of_frames; i++)\n\t{\n\t\tinitialize_frame_info(&(frames_info[i]));\n\n\t\t//frames_info[i].references = 0;\n\t\tLIST_INSERT_HEAD(&MemFrameLists.free_frame_list, &frames_info[i]);\n\t}\n\n\tinitialize_disk_page_file();\n}\n\n//\n// Initialize a Frame_Info structure.\n// The result has null links and 0 references.\n// Note that the corresponding physical frame is NOT initialized!\n//\nvoid initialize_frame_info(struct FrameInfo *ptr_frame_info)\n{\n\tmemset(ptr_frame_info, 0, sizeof(*ptr_frame_info));\n}\n\n//\n// Allocates a physical frame.\n// Does NOT set the contents of the physical frame to zero -\n// the caller must do that if necessary.\n//\n// *ptr_frame_info -- is set to point to the Frame_Info struct of the\n// newly allocated frame\n//\n// RETURNS\n//   0 -- on success\n//   If failed, it panic.\n//\n// Hint: use LIST_FIRST, LIST_REMOVE, and initialize_frame_info\n// Hint: references should not be incremented\nint allocate_frame(struct FrameInfo **ptr_frame_info)\n{\n\tbool lock_already_held = holding_kspinlock(&MemFrameLists.mfllock);\n\n\tif (!lock_already_held)\n\t{\n\t\tacquire_kspinlock(&MemFrameLists.mfllock);\n\t}\n\n\t*ptr_frame_info = LIST_FIRST(&MemFrameLists.free_frame_list);\n\tint c = 0;\n\n\tif (*ptr_frame_info == NULL)\n\t{\n\t\tpanic(\"ERROR: Kernel run out of memory... allocate_frame cannot find a free frame.\\n\");\n\t}\n\n\tLIST_REMOVE(&MemFrameLists.free_frame_list,*ptr_frame_info);\n\n\t/******************* PAGE BUFFERING CODE *******************\n\t ***********************************************************/\n\n\tif((*ptr_frame_info)->isBuffered)\n\t{\n\t\t/*MUST UN-COMMENT THIS LINE*/\n\t\t//pt_clear_page_table_entry((*ptr_frame_info)->proc->env_page_directory,(*ptr_frame_info)->va);\n\t}\n\n\t/**********************************************************\n\t ***********************************************************/\n\n\tinitialize_frame_info(*ptr_frame_info);\n\n\tif (!lock_already_held)\n\t{\n\t\trelease_kspinlock(&MemFrameLists.mfllock);\n\t}\n\n\treturn 0;\n}\n\n//\n// Return a frame to the free_frame_list.\n// (This function should only be called when ptr_frame_info->references reaches 0.)\n//\nvoid free_frame(struct FrameInfo *ptr_frame_info)\n{\n\tbool lock_already_held = holding_kspinlock(&MemFrameLists.mfllock);\n\n\tif (!lock_already_held)\n\t{\n\t\tacquire_kspinlock(&MemFrameLists.mfllock);\n\t}\n\t{\n\t\t/*2012: clear it to ensure that its members (env, isBuffered, ...) become NULL*/\n\t\tinitialize_frame_info(ptr_frame_info);\n\t\t/*=============================================================================*/\n\t\t// Fill this function in\n\t\tLIST_INSERT_HEAD(&MemFrameLists.free_frame_list, ptr_frame_info);\n\t\t//LOG_STATMENT(cprintf(\"FN # %d FREED\",to_frame_number(ptr_frame_info)));\n\t}\n\tif (!lock_already_held)\n\t{\n\t\trelease_kspinlock(&MemFrameLists.mfllock);\n\t}\n}\n\n//\n// Decrement the reference count on a frame\n// freeing it if there are no more references.\n//\nvoid decrement_references(struct FrameInfo* ptr_frame_info)\n{\n\tif (--(ptr_frame_info->references) == 0)\n\t\tfree_frame(ptr_frame_info);\n}\n\n//\n// Stores address of page table entry in *ptr_page_table .\n// Stores 0 if there is no such entry or on error.\n//\n// IT RETURNS:\n//  TABLE_IN_MEMORY : if page table exists in main memory\n//\tTABLE_NOT_EXIST : if page table doesn't exist,\n//\n\nint get_page_table(uint32 *ptr_page_directory, const uint32 virtual_address, uint32 **ptr_page_table)\n{\n\t//\tcprintf(\"gpt .05\\n\");\n\tuint32 page_directory_entry = ptr_page_directory[PDX(virtual_address)];\n\n\t//2022: check PERM_PRESENT of the table first before calculating its PA\n\tif ( (page_directory_entry & PERM_PRESENT) == PERM_PRESENT)\n\t{\n\t\t//\tcprintf(\"gpt .07, page_directory_entry= %x \\n\",page_directory_entry);\n\t\tif(USE_KHEAP && !CHECK_IF_KERNEL_ADDRESS(virtual_address))\n\t\t{\n\t\t\t*ptr_page_table = (void *)kheap_virtual_address(EXTRACT_ADDRESS(page_directory_entry)) ;\n\t\t\t//cprintf(\"===>get_page_table: page_dir_entry = %x ptr_page_table = %x\\n\", page_directory_entry,*ptr_page_table);\n\t\t}\n\t\telse\n\t\t{\n\t\t\t*ptr_page_table = STATIC_KERNEL_VIRTUAL_ADDRESS(EXTRACT_ADDRESS(page_directory_entry)) ;\n\t\t}\n\t\treturn TABLE_IN_MEMORY;\n\t}\n\telse if (page_directory_entry != 0) //the table exists but not in main mem, so it must be in sec mem\n\t{\n\t\t// Put the faulted address in CR2 and then\n\t\t// Call the fault_handler() to load the table in memory for us ...\n\t\t//\t\tcprintf(\"gpt .1\\n, %x page_directory_entry\\n\", page_directory_entry);\n\t\tlcr2((uint32)virtual_address) ;\n\n\t\t//\t\tcprintf(\"gpt .12\\n\");\n\t\tfault_handler(NULL);\n\n\t\t//\t\tcprintf(\"gpt .15\\n\");\n\t\t// now the page_fault_handler() should have returned successfully and updated the\n\t\t// directory with the new table frame number in memory\n\t\tpage_directory_entry = ptr_page_directory[PDX(virtual_address)];\n\t\tif(USE_KHEAP && !CHECK_IF_KERNEL_ADDRESS(virtual_address))\n\t\t{\n\t\t\t*ptr_page_table = (void *)kheap_virtual_address(EXTRACT_ADDRESS(page_directory_entry)) ;\n\t\t}\n\t\telse\n\t\t{\n\t\t\t*ptr_page_table = STATIC_KERNEL_VIRTUAL_ADDRESS(EXTRACT_ADDRESS(page_directory_entry)) ;\n\t\t}\n\n\t\treturn TABLE_IN_MEMORY;\n\t}\n\telse // there is no table for this va anywhere. This is a new table required, so check if the user want creation\n\t{\n\t\t//\t\tcprintf(\"gpt .2\\n\");\n\t\t*ptr_page_table = 0;\n\t\treturn TABLE_NOT_EXIST;\n\t}\n}\n\nvoid * create_page_table(uint32 *ptr_directory, const uint32 virtual_address)\n{\n\t//[Kernel Dynamic Allocation] create_page_table()\n\t// Write your code here, remove the panic and write your code\n\t//panic(\"create_page_table() is not implemented yet...!!\");\n\n\t//Use kmalloc() to create a new page TABLE for the given virtual address,\n\t//link it to the given directory and return the address of the created table\n\t//REMEMBER TO:\n\t//\ta.\tclear all entries (as it may contain garbage data)\n\t//\tb.\tclear the TLB cache (using \"tlbflush()\")\n\n\t//change this \"return\" according to your answer\n\n#if USE_KHEAP\n\tuint32 * ptr_page_table = kmalloc(PAGE_SIZE);\n\t//cprintf(\"new table is created==================\\n\");\n\tif(ptr_page_table == NULL)\n\t{\n\t\tpanic(\"NOT ENOUGH KERNEL HEAP SPACE\");\n\t}\n\t//cprintf(\"Table is created for va %x\\n\", virtual_address);\n\tptr_directory[PDX(virtual_address)] = CONSTRUCT_ENTRY(\n\t\t\tkheap_physical_address((unsigned int)ptr_page_table)\n\t\t\t, PERM_PRESENT | PERM_USER | PERM_WRITEABLE);\n\n\t//================\n\tmemset(ptr_page_table , 0, PAGE_SIZE);\n\ttlbflush();\n\n#else\n\tuint32 * ptr_page_table ;\n\t__static_cpt(ptr_directory, virtual_address, &ptr_page_table) ;\n#endif\n\n\t//cprintf(\"KERNEL: NEW TABLE for va %x \\n\", virtual_address);\n\n\treturn ptr_page_table;\n}\n\nvoid __static_cpt(uint32 *ptr_directory, const uint32 virtual_address, uint32 **ptr_page_table)\n{\n\tstruct FrameInfo* ptr_new_frame_info;\n\tint err = allocate_frame(&ptr_new_frame_info) ;\n\n\tuint32 phys_page_table = to_physical_address(ptr_new_frame_info);\n\t*ptr_page_table = STATIC_KERNEL_VIRTUAL_ADDRESS(phys_page_table) ;\n\tptr_new_frame_info->references = 1;\n\tptr_directory[PDX(virtual_address)] = CONSTRUCT_ENTRY(phys_page_table, PERM_PRESENT | PERM_USER | PERM_WRITEABLE);\n\t//initialize new page table by 0's\n\tmemset(*ptr_page_table , 0, PAGE_SIZE);\n\ttlbflush();\n}\n//\n// Map the physical frame 'ptr_frame_info' at 'virtual_address'.\n// The permissions (the low 12 bits) of the page table\n//  entry should be set to 'perm|PERM_PRESENT'.\n//\n// Details\n//   - If there is already a frame mapped at 'virtual_address', it should be unmaped\n// using unmap_frame().\n//   - If necessary, on demand, allocates a page table and inserts it into 'ptr_page_directory'.\n//   - ptr_frame_info->references should be incremented if the insertion succeeds\n//\n// RETURNS:\n//   0 on success\n//\n// Hint: implement using get_page_table() and unmap_frame().\n//\nint map_frame(uint32 *ptr_page_directory, struct FrameInfo *ptr_frame_info, uint32 virtual_address, int perm)\n{\n\t// Fill this function in\n\tuint32 physical_address = to_physical_address(ptr_frame_info);\n\tuint32 *ptr_page_table;\n\tif( get_page_table(ptr_page_directory, virtual_address, &ptr_page_table) == TABLE_NOT_EXIST)\n\t{\n\t\t/*==========================================================================================\n\t\t// OLD WRONG SOLUTION\n\t\t//=====================\n\t\t//// initiate a read instruction for an address inside the wanted table.\n\t\t//// this will generate a page fault, that will cause page_fault_handler() to\n\t\t//// create the table in memory for us ...\n\t\t//char dummy_char = *((char*)virtual_address) ;\n\t\t//// a page fault is created now and page_fault_handler() should start handling the fault ...\n\n\t\t//// now the page_fault_handler() should have returned successfully and updated the\n\t\t//// directory with the new table frame number in memory\n\t\t//uint32 page_directory_entry;\n\t\t//page_directory_entry = ptr_page_directory[PDX(virtual_address)];\n\t\t//ptr_page_table = STATIC_KERNEL_VIRTUAL_ADDRESS(EXTRACT_ADDRESS(page_directory_entry)) ;\n\t\t=============================================================================================*/\n#if USE_KHEAP\n\t\t{\n\t\t\tptr_page_table = create_page_table(ptr_page_directory, (uint32)virtual_address);\n\t\t\t//cprintf(\"======>page table created using kheap for VA %x at dir = %x PT = %x\\n\", virtual_address, ptr_page_directory[PDX(virtual_address)], ptr_page_table);\n\t\t\tuint32* ptr_page_table2 =NULL;\n\t\t\t//cprintf(\"======> After the table created at %x\\n\\n\", get_page_table(ptr_page_directory, virtual_address,&ptr_page_table2));\n\t\t}\n#else\n\t\t{\n\t\t\t__static_cpt(ptr_page_directory, (uint32)virtual_address, &ptr_page_table);\n\t\t}\n#endif\n\n\t}\n\n\t//cprintf(\"NOW .. map add = %x ptr_page_table = %x PTX(virtual_address) = %d\\n\", virtual_address, ptr_page_table,PTX(virtual_address));\n\tuint32 page_table_entry = ptr_page_table[PTX(virtual_address)];\n\n\t/*OLD WRONG SOLUTION\n\tif( EXTRACT_ADDRESS(page_table_entry) != physical_address)\n\t{\n\t\tif( page_table_entry != 0)\n\t\t{\n\t\t\tunmap_frame(ptr_page_directory , virtual_address);\n\t\t}\n\t\tptr_frame_info->references++;\n\t\tptr_page_table[PTX(virtual_address)] = CONSTRUCT_ENTRY(physical_address , perm | PERM_PRESENT);\n\n\t}*/\n\n\t/*NEW'15 CORRECT SOLUTION*/\n\t//If already mapped\n\tif ((page_table_entry & PERM_PRESENT) == PERM_PRESENT)\n\t{\n\t\t//on this pa, then do nothing\n\t\tif (EXTRACT_ADDRESS(page_table_entry) == physical_address)\n\t\t\treturn 0;\n\t\t//on another pa, then unmap it\n\t\telse\n\t\t\tunmap_frame(ptr_page_directory , virtual_address);\n\t}\n\tptr_frame_info->references++;\n\n\t/*********************************************************************************/\n\t/*NEW'23 el7:)\n\t * map_frame(): KEEP THE VALUES OF THE AVAILABLE BITS*/\n\tuint32 pte_available_bits = ptr_page_table[PTX(virtual_address)] & PERM_AVAILABLE;\n\tptr_page_table[PTX(virtual_address)] = CONSTRUCT_ENTRY(physical_address , pte_available_bits | perm | PERM_PRESENT);\n\t/*********************************************************************************/\n\n\treturn 0;\n}\n\n//\n// Return the frame that is either\n//\t1. mapped (i.e. present) at 'virtual_address'\n//\t2. buffered to 'virtual_address'\n// If the page table entry corresponding to 'virtual_address' exists, then we store a pointer to the table in 'ptr_page_table'\n// Return 0 if there is no frame mapped/buffered at virtual_address.\n//\nstruct FrameInfo * get_frame_info(uint32 *ptr_page_directory, uint32 virtual_address, uint32 **ptr_page_table)\n{\n\t// Fill this function in\n\tuint32 ret =  get_page_table(ptr_page_directory, virtual_address, ptr_page_table) ;\n\tif((*ptr_page_table) != 0)\n\t{\n\t\tuint32 index_page_table = PTX(virtual_address);\n\t\tuint32 page_table_entry = (*ptr_page_table)[index_page_table];\n\n\t\t/*2023 el7:)*///Make sure it has a frame number other than 0 (not just a marked page from the page allocator)\n\t\t/*2025 el7:)*///or if it's 0, make sure it's either present or buffered\n\t\t//if( page_table_entry != 0)\n\t\t//if((page_table_entry & ~0xFFF) != 0)\n\t\tif( ((page_table_entry & ~0xFFF) != 0) || ((page_table_entry & (PERM_PRESENT|PERM_BUFFERED)) != 0))\n\t\t{\n\t\t\treturn to_frame_info( EXTRACT_ADDRESS ( page_table_entry ) );\n\t\t}\n\t\treturn 0;\n\t}\n\treturn 0;\n}\n\n//\n// Unmaps the physical frame at 'virtual_address'.\n//\n// Details:\n//   - The references count on the physical frame should decrement.\n//   - The physical frame should be freed if the 'references' reaches 0.\n//   - The page table entry corresponding to 'virtual_address' should be set to 0.\n//     (if such a page table exists)\n//   - The TLB must be invalidated if you remove an entry from\n//\t   the page directory/page table.\n//\n// Hint: implement using get_frame_info(),\n// \ttlb_invalidate(), and decrement_references().\n//\nvoid unmap_frame(uint32 *ptr_page_directory, uint32 virtual_address)\n{\n\t// Fill this function in\n\tuint32 *ptr_page_table;\n\tstruct FrameInfo* ptr_frame_info = get_frame_info(ptr_page_directory, virtual_address, &ptr_page_table);\n\tif( ptr_frame_info != 0 )\n\t{\n\t\tif (ptr_frame_info->isBuffered && !CHECK_IF_KERNEL_ADDRESS((uint32)virtual_address))\n\t\t\tcprintf(\"WARNING: Freeing BUFFERED frame at va %x!!!\\n\", virtual_address) ;\n\t\tdecrement_references(ptr_frame_info);\n\n\t\t/*********************************************************************************/\n\t\t/*NEW'23 el7:)\n\t\t * unmap_frame(): KEEP THE VALUES OF THE AVAILABLE BITS*/\n\t\tuint32 pte_available_bits = ptr_page_table[PTX(virtual_address)] & PERM_AVAILABLE;\n\t\tptr_page_table[PTX(virtual_address)] = pte_available_bits;\n\t\t/*********************************************************************************/\n\n\t\ttlb_invalidate(ptr_page_directory, (void *)virtual_address);\n\t}\n}\n\n\n/*/this function should be called only in the env_create() for creating the page table if not exist\n * (without causing page fault as the normal map_frame())*/\n// Map the physical frame 'ptr_frame_info' at 'virtual_address'.\n// The permissions (the low 12 bits) of the page table\n//  entry should be set to 'perm|PERM_PRESENT'.\n//\n// Details\n//   - If necessary, on demand, allocates a page table and inserts it into 'ptr_page_directory'.\n//   - ptr_frame_info->references should be incremented if the insertion succeeds\n//\n// RETURNS:\n//   0 on success\n//\n//\nint loadtime_map_frame(uint32 *ptr_page_directory, struct FrameInfo *ptr_frame_info, uint32 virtual_address, int perm)\n{\n\tuint32 physical_address = to_physical_address(ptr_frame_info);\n\tuint32 *ptr_page_table;\n\n\tuint32 page_directory_entry = ptr_page_directory[PDX(virtual_address)];\n\n\tif(USE_KHEAP && !CHECK_IF_KERNEL_ADDRESS(virtual_address))\n\t{\n\t\tptr_page_table = (uint32*)kheap_virtual_address(EXTRACT_ADDRESS(page_directory_entry)) ;\n\t}\n\telse\n\t{\n\t\tptr_page_table = STATIC_KERNEL_VIRTUAL_ADDRESS(EXTRACT_ADDRESS(page_directory_entry)) ;\n\t}\n\n\t//if page table not exist, create it in memory and link it with the directory\n\tif (page_directory_entry == 0)\n\t{\n#if USE_KHEAP\n\t\t{\n\t\t\tptr_page_table = create_page_table(ptr_page_directory, virtual_address);\n\t\t}\n#else\n\t\t{\n\t\t\t__static_cpt(ptr_page_directory, virtual_address, &ptr_page_table);\n\t\t}\n#endif\n\t}\n\n\tptr_frame_info->references++;\n\tptr_page_table[PTX(virtual_address)] = CONSTRUCT_ENTRY(physical_address , perm | PERM_PRESENT);\n\n\treturn 0;\n}\n\n\n///****************************************************************************************///\n///******************************* END OF MAPPING USER SPACE ******************************///\n///****************************************************************************************///\n\n\n//==================================================================================================\n//==================================================================================================\n//==================================================================================================\n\n\n\n// calculate_available_frames:\nstruct freeFramesCounters calculate_available_frames()\n{\n\tstruct FrameInfo *ptr;\n\tuint32 totalFreeUnBuffered = 0 ;\n\tuint32 totalFreeBuffered = 0 ;\n\tuint32 totalModified = 0 ;\n\tbool lock_is_held = holding_kspinlock(&MemFrameLists.mfllock);\n\tif (!lock_is_held)\n\t{\n\t\tacquire_kspinlock(&MemFrameLists.mfllock);\n\t}\n\t{\n\t\t//calculate the free frames from the free frame list\n\n\t\tLIST_FOREACH(ptr, &MemFrameLists.free_frame_list)\n\t\t{\n\t\t\tif (ptr->isBuffered)\n\t\t\t\ttotalFreeBuffered++ ;\n\t\t\telse\n\t\t\t\ttotalFreeUnBuffered++ ;\n\t\t}\n\n\t\t/*2023: UPDATE based on suggestion from T112 2023.Term1*/\n\t\ttotalModified= LIST_SIZE(&MemFrameLists.modified_frame_list);\n\t\t//\tLIST_FOREACH(ptr, &modified_frame_list)\n\t\t//\t{\n\t\t//\t\ttotalModified++ ;\n\t\t//\t}\n\t}\n\tif (!lock_is_held)\n\t{\n\t\trelease_kspinlock(&MemFrameLists.mfllock);\n\t}\n\tstruct freeFramesCounters counters ;\n\tcounters.freeBuffered = totalFreeBuffered ;\n\tcounters.freeNotBuffered = totalFreeUnBuffered ;\n\tcounters.modified = totalModified;\n\treturn counters;\n}\n\n///============================================================================================\n\n\n\n"}, {"name": "kern/mem/paging_helpers.c", "code": "/*\n * paging_helpers.c\n *\n * Created on: Sep 30, 2022\n * Author: HP\n */\n#include \"memory_manager.h\"\n#include \"kheap.h\"\n\n/**************************************/\n/*[1] PAGE TABLE ENTRIES MANIPULATION */\n/**************************************/\n//===============================\n//1) UPDATE PAGE PERMISSIONS\n//===============================\n//Should update the page permissions of the given VA as follows:\n//\t1. Set to 1 all \"permissions_to_set\"\n//\t2. Set to 0 all \"permissions_to_reset\"\n//It's expected that the page table already exist. If not, the function should panic\n//REMEMBER: to invalidate the TLB cache\ninline void pt_set_page_permissions(uint32* directory, uint32 virtual_address, uint32 permissions_to_set, uint32 permissions_to_clear)\n{\n\t//[1] Get the table\n\tuint32* ptr_page_table ;\n\tint ret = get_page_table(directory, virtual_address, &ptr_page_table);\n\n\t//[2] If exists, update permissions\n\tif (ptr_page_table != NULL)\n\t{\n\t\tptr_page_table[PTX(virtual_address)] |= (permissions_to_set);\n\t\tptr_page_table[PTX(virtual_address)] &= (~permissions_to_clear);\n\n\t}\n\t//[3] Else, should \"panic\" since the table should be exist\n\telse\n\t{\n\t\tcprintf(\"va=%x not exist and has no page table\\n\", virtual_address);\n\t\t//cprintf(\"[%s] va = %x\\n\", ptr_env->prog_name, virtual_address) ;\n\t\tpanic(\"function pt_set_page_permissions() called with invalid virtual address. The corresponding page table doesn't exist\\n\") ;\n\t}\n\n\t//[4] Invalidate the cache memory (TLB) [call tlb_invalidate(..)]\n\t//tlb_invalidate(NULL, (void *)virtual_address);\n\ttlb_invalidate(directory, (void *)virtual_address);\n}\n\n//===============================\n//2) GET PAGE PERMISSIONS\n//===============================\n//Should get ALL page permissions of the given VA\n//If the page table not exist, return -1\ninline int pt_get_page_permissions(uint32* directory, uint32 virtual_address )\n{\n\t//TODO: PRACTICE: fill this function.\n\tuint32* ptr_page_table = NULL;\n\tint ret = get_page_table(directory, virtual_address, &ptr_page_table);\n\n\tif (ptr_page_table != NULL)\n\t{\n\t\treturn ptr_page_table[PTX(virtual_address)] & 0xFFF;\n\t}\n\treturn -1;\n}\n\n//===============================\n//3) CLEAR PAGE TABLE ENTRY\n//===============================\n//Should clear the entire entry of the page table for the given VA\n//If the page table not exist, return -1\n//It's expected that the page table already exist. If not, the function should panic\n//REMEMBER: to invalidate the TLB cache\ninline void pt_clear_page_table_entry(uint32* directory, uint32 virtual_address)\n{\n\tuint32* ptr_page_table = NULL;\n\tint ret = get_page_table(directory, virtual_address, &ptr_page_table);\n\n\tif (ptr_page_table != NULL)\n\t{\n\t\tuint32 pte_available_bits = ptr_page_table[PTX(virtual_address)] & PERM_AVAILABLE;\n\t\tptr_page_table[PTX(virtual_address)] = pte_available_bits;\n\t\ttlb_invalidate(directory, (void*)virtual_address);\n\t}\n\telse\n\t{\n\t\tpanic(\"pt_clear_page_table_entry() called but page table does not exist!\");\n\t}\n}\n\n/***********************************************************************************************/\n/***********************************************************************************************/\n\n/*********************/\n/*[2] PAGING HELPERS */\n/*********************/\n//===============================\n//1) ADDRESS CONVERTION (VA->PA)\n//===============================\n//return the physical address corresponding to given virtual_address\n//If the page or the page table is not present, return -1\ninline uint32 virtual_to_physical(uint32* directory, uint32 virtual_address)\n{\n\t//TODO: PRACTICE: fill this function.\n\tuint32* ptr_page_table = NULL;\n\tget_page_table(directory, virtual_address, &ptr_page_table);\n\n\tif (ptr_page_table != NULL)\n\t{\n\t\tuint32 entry = ptr_page_table[PTX(virtual_address)];\n\t\tif (entry & PERM_PRESENT)\n\t\t{\n\t\t\treturn (entry & 0xFFFFF000) | (virtual_address & 0x00000FFF);\n\t\t}\n\t}\n\treturn -1;\n}\n\n//===============================\n//2) ADDRESS CONVERTION (PA->VA)\n//===============================\n//return the VIRTUAL address corresponding to given physical address\n//If multiple VA's, return the first occurrence\n//If not found, return 0xFFFFFFFF\ninline uint32 physical_to_virtual(uint32* directory, uint32 physical_address)\n{\n\t//TODO: PRACTICE: fill this function.\n\t// Iterate over all possible page tables\n\tfor (uint32 i = 0; i < 1024; i++)\n\t{\n\t\tif (directory[i] & PERM_PRESENT)\n\t\t{\n\t\t\tuint32* ptr_page_table = NULL;\n\t\t\t// Get the virtual address of the page table corresponding to the i-th directory entry\n\t\t\t// We simulate looking up the VA that would map to this table\n\t\t\tget_page_table(directory, i << 22, &ptr_page_table);\n\n\t\t\tif (ptr_page_table != NULL)\n\t\t\t{\n\t\t\t\tfor (uint32 j = 0; j < 1024; j++)\n\t\t\t\t{\n\t\t\t\t\tif ((ptr_page_table[j] & PERM_PRESENT) &&\n\t\t\t\t\t\t(ptr_page_table[j] & 0xFFFFF000) == (physical_address & 0xFFFFF000))\n\t\t\t\t\t{\n\t\t\t\t\t\treturn (i << 22) | (j << 12) | (physical_address & 0xFFF);\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n\treturn 0xFFFFFFFF;\n}\n\n//===============================\n//3) NUMBER OF REFERENCES\n//===============================\n//return the number of page references on the frame at the given physical address\ninline uint32 num_of_references(uint32 physical_address)\n{\n\t//TODO: LAB4 Example#1: fill this function.\n\tstruct FrameInfo* ptr_fi = to_frame_info(physical_address);\n\treturn ptr_fi->references;\n}\n\n//===============================\n//4) ALLOCATE PAGE\n//===============================\n//If the given user virtual address is mapped, do nothing.\n//Else:\n//\tallocate a single frame and map it to a given virtual address with the given perms.\n//\tif set_to_zero, initialize it by ZEROs\n//Return\n//\t0 on success,\n//\t1 if already mapped\n//  E_NO_MEM if no memory\n//HINT: remember to free the allocated frame if there is no space for the necessary page table\ninline int alloc_page(uint32* directory, uint32 va, uint32 perms, bool set_to_zero)\n{\n\t//TODO: LAB4 Example#2: fill this function.\n\tuint32* ptr_table ;\n\tstruct FrameInfo* ptr_fi = get_frame_info(directory, va, &ptr_table);\n\tif (ptr_fi != NULL) {\n\t\treturn 1;\n\t}\n\telse {\n\t\tint ret = allocate_frame(&ptr_fi);\n\t\tif (ret == E_NO_MEM) {\n\t\t\treturn E_NO_MEM;\n\t\t}\n\t\tret = map_frame(directory, ptr_fi, va, perms);\n\t\tif (ret == E_NO_MEM) {\n\t\t\tfree_frame(ptr_fi);\n\t\t\treturn E_NO_MEM;\n\t\t}\n\t\tif (set_to_zero) {\n\t\t\tmemset((void*)va, 0, PAGE_SIZE);\n\t\t}\n\t\treturn 0;\n\t}\n}\n\n//===============================\n//5) ALLOCATE SHARED PAGE\n//===============================\n//\tallocate a single frame and SHARE it on the two address spaces\n//\tat the given virtual addresses with the given perms\n//Return\n//\t0 on success,\n//  E_NO_MEM if no memory\n//HINT: remember to free the allocated frame if there is no space for the necessary page table\ninline int alloc_shared_page(uint32* page_dir1, uint32 va1,uint32* page_dir2, uint32 va2, uint32 perms)\n{\n\t//TODO: PRACTICE: fill this function.\n\tstruct FrameInfo *p_frame_info;\n\tint ret;\n\n\t// 1. Allocate a new frame\n\tret = allocate_frame(&p_frame_info);\n\tif (ret == E_NO_MEM) return E_NO_MEM;\n\n\t// 2. Map it to the first virtual address\n\tret = map_frame(page_dir1, p_frame_info, va1, perms);\n\tif (ret == E_NO_MEM)\n\t{\n\t\tfree_frame(p_frame_info);\n\t\treturn E_NO_MEM;\n\t}\n\n\t// 3. Map it to the second virtual address\n\tret = map_frame(page_dir2, p_frame_info, va2, perms);\n\tif (ret == E_NO_MEM)\n\t{\n\t\t// If mapping fails, unmap the first one (which decrements ref count)\n\t\t// and return error.\n\t\tunmap_frame(page_dir1, va1);\n\t\treturn E_NO_MEM;\n\t}\n\n\treturn 0;\n}\n\n//===============================\n//6) DELETE PAGE TABLE\n//===============================\n//\tFree (delete) the page table that corresponds to the given virtual address, simply by:\n//\t1. removing the link between the directory and the table and\n//\t2. adding the frame of the table to the free frame list.\n\n//REMEMBER: to invalidate the TLB cache\ninline void del_page_table(uint32* page_dir, uint32 va)\n{\n\t//TODO: LAB6 Example: fill this function.\n\n\t// get the page table of the given virtual address\n\tuint32 * ptr_page_table ;\n\tget_page_table(ptr_page_directory, va, &ptr_page_table);\n\n\tif (ptr_page_table == NULL)\n\t\treturn ;\n\n#if USE_KHEAP\n\t// directly remove the page table from the kernel heap\n\tkfree(ptr_page_table);\n#else\n\t// get the physical address and Frame_Info of the page table\n\tuint32 table_pa = STATIC_KERNEL_PHYSICAL_ADDRESS(ptr_page_table);\n\tstruct FrameInfo *table_frame_info = to_frame_info(table_pa);\n\n\t// set references of the table frame to 0 then free it by adding\n\t// to the free frame list\n\ttable_frame_info->references = 0;\n\tfree_frame(table_frame_info);\n#endif\n\n\t// set the corresponding entry in the directory to 0\n\tuint32 dir_index = PDX(va);\n\tptr_page_directory[dir_index] = 0;\n\n\t//clear the TLB cache\n\ttlbflush();\n}\n\n\n/***********************************************************************************************/\n/***********************************************************************************************/\n/***********************************************************************************************/\n/***********************************************************************************************/\n/***********************************************************************************************/\n\n///============================================================================================\n/// Dealing with page directory entry flags\n\ninline uint32 pd_is_table_used(uint32* directory, uint32 virtual_address)\n{\n\treturn ( (directory[PDX(virtual_address)] & PERM_USED) == PERM_USED ? 1 : 0);\n}\n\ninline void pd_set_table_unused(uint32* directory, uint32 virtual_address)\n{\n\tdirectory[PDX(virtual_address)] &= (~PERM_USED);\n\ttlb_invalidate((void *)NULL, (void *)virtual_address);\n}\n\ninline void pd_clear_page_dir_entry(uint32* directory, uint32 virtual_address)\n{\n\tdirectory[PDX(virtual_address)] = 0 ;\n\ttlbflush();\n}\n"}, {"name": "kern/proc/priority_manager.c", "code": "#include <inc/stdio.h>\n#include <kern/proc/priority_manager.h>\n#include <inc/assert.h>\n#include <kern/proc/user_environment.h>\n#include \"../disk/pagefile_manager.h\"\n#include \"../mem/kheap.h\"\n#include \"../mem/memory_manager.h\"\n\n\nvoid set_program_priority(struct Env* env, int priority)\n{\n\t//[PROGRAM PRIORITY] set_program_priority\n\t//[ALREADY IMPLEMENTED]\n\n\tif(priority < 1 || priority > 5)\n\t{\n\t\tpanic(\"Please enter valid priority (1->5)\\n\");\n\t\treturn;\n\t}\n\tif(env == NULL)\n\t\treturn;\n\tswitch(priority)\n\t{\n\t\tcase PRIORITY_LOW:\n\t\t\thalf_WS_Size(env, 1);\n\t\t\tbreak;\n\t\tcase PRIORITY_BELOWNORMAL:\n\t\t\thalf_WS_Size(env, 0);\n\t\t\tbreak;\n\t\tcase PRIORITY_NORMAL:\n\t\t\t// Do Nothing\n\t\t\tbreak;\n\t\tcase PRIORITY_ABOVENORMAL:\n\t\t\tdouble_WS_Size(env, 1);\n\t\t\tbreak;\n\t\tcase PRIORITY_HIGH:\n\t\t\tdouble_WS_Size(env, 0);\n\t\t\tbreak;\n\t}\n\n\tcprintf(\"The new size of the ws is %d\\n\", env->page_WS_max_size);\n}\n"}, {"name": "kern/cpu/sched.c", "code": "#include \"sched.h\"\n\n#include <inc/assert.h>\n\n#include <kern/proc/user_environment.h>\n#include <kern/trap/trap.h>\n#include <kern/mem/kheap.h>\n#include <kern/mem/memory_manager.h>\n#include <kern/tests/utilities.h>\n#include <kern/cmd/command_prompt.h>\n#include <kern/cpu/cpu.h>\n#include <kern/cpu/picirq.h>\n\n\nuint32 isSchedMethodRR(){return (scheduler_method == SCH_RR);}\nuint32 isSchedMethodMLFQ(){return (scheduler_method == SCH_MLFQ); }\nuint32 isSchedMethodBSD(){return(scheduler_method == SCH_BSD); }\nuint32 isSchedMethodPRIRR(){return(scheduler_method == SCH_PRIRR); }\nuint32 starvation_threshold = 0; // To store the threshold for starvation\n//===================================================================================//\n//============================ SCHEDULER FUNCTIONS ==================================//\n//===================================================================================//\nstatic struct Env* (*sched_next[])(void) = {\n[SCH_RR]    fos_scheduler_RR,\n[SCH_MLFQ]  fos_scheduler_MLFQ,\n[SCH_BSD]   fos_scheduler_BSD,\n[SCH_PRIRR]   fos_scheduler_PRIRR,\n\n};\n\n//===================================\n// [1] Default Scheduler Initializer:\n//===================================\nvoid sched_init()\n{\n\told_pf_counter = 0;\n\n\tsched_init_RR(INIT_QUANTUM_IN_MS);\n\n\tinit_queue(&ProcessQueues.env_new_queue);\n\tinit_queue(&ProcessQueues.env_exit_queue);\n\n\tmycpu()->scheduler_status = SCH_STOPPED;\n\n\t/*2024: initialize lock to protect these Qs in MULTI-CORE case only*/\n\tinit_kspinlock(&ProcessQueues.qlock, \"process queues lock\");\n}\n\n//=========================\n// [2] Main FOS Scheduler:\n//=========================\n\nvoid\nfos_scheduler(void)\n{\n\t//ensure that the scheduler is invoked while interrupt is disabled\n\tif (read_eflags() & FL_IF)\n\t\tpanic(\"fos_scheduler: called while the interrupt is enabled!\");\n\n\t//cprintf(\"inside scheduler - timer cnt = %d\\n\", kclock_read_cnt0());\n\tstruct Env *p;\n\tstruct cpu *c = mycpu();\n\tc->proc = 0;\n\n\tchk1();\n\tc->scheduler_status = SCH_STARTED;\n\n\t//This variable should be set to the next environment to be run (if any)\n\tstruct Env* next_env = NULL;\n\n\t//2024: should be outer loop as long as there's any BLOCKED processes.\n\t//Ref: xv6-x86 OS\n\tint is_any_blocked = 0;\n\tdo\n\t{\n\t\t// Enable interrupts on this processor for a while to allow BLOCKED process to resume\n\t\t// The most recent process to run may have had interrupts turned off; enable them\n\t\t// to avoid a deadlock if all processes are waiting.\n\t\tsti();\n\n\t\t// Check ready queue(s) looking for process to run.\n\t\t//cprintf(\"\\n[FOS_SCHEDULER] acquire: lock status before acquire = %d\\n\", qlock.locked);\n\t\tacquire_kspinlock(&(ProcessQueues.qlock));  //lock: to protect ready & blocked Qs in multi-CPU\n\t\t//cprintf(\"ACQUIRED\\n\");\n\t\tdo\n\t\t{\n\t\t\t//Get next env according to the current scheduler\n\t\t\tnext_env = sched_next[scheduler_method]() ;\n\n\t\t\tif(next_env != NULL)\n\t\t\t{\n\t\t\t\t//cprintf(\"\\nScheduler select program '%s' [%d]... clock counter = %d\\n\", next_env->prog_name, next_env->env_id, kclock_read_cnt0());\n\t\t\t\t// Switch to chosen process. It is the process's job to release qlock\n\t\t\t\t// and then reacquire it before jumping back to us.\n\t\t\t\tset_cpu_proc(next_env);\n\t\t\t\tswitchuvm(next_env);\n\n\t\t\t\t//Change its status to RUNNING\n\t\t\t\tnext_env->env_status = ENV_RUNNING;\n\n\t\t\t\t//Context switch to it\n\t\t\t\tcontext_switch(&(c->scheduler), next_env->context);\n\n\t\t\t\t//ensure that the qlock is still held after returning from the process\n\t\t\t\tif(!holding_kspinlock(&ProcessQueues.qlock))\n\t\t\t\t{\n\t\t\t\t\tprintcallstack(&ProcessQueues.qlock);\n\t\t\t\t\tpanic(\"fos_scheduler(): qlock is either not held or held by another CPU!\");\n\t\t\t\t}\n\n\t\t\t\t//Stop the clock now till finding a next proc (if any).\n\t\t\t\t//This is to avoid clock interrupt inside the scheduler after sti() of the outer loop\n\t\t\t\tkclock_stop();\n\t\t\t\t//cprintf(\"\\n[IEN = %d] clock is stopped! returned to scheduler after context_switch. curenv = %d\\n\", (read_eflags() & FL_IF) == 0? 0:1, c->proc == NULL? 0 : c->proc->env_id);\n\n\t\t\t\t// Process is done running for now. It should have changed its p->status before coming back.\n\t\t\t\t//If no process on CPU, switch to the kernel\n\t\t\t\tassert(get_cpu_proc() == c->proc);\n\t\t\t\tint status = c->proc->env_status ;\n\t\t\t\tassert(status != ENV_RUNNING);\n\t\t\t\tif (status == ENV_READY)\n\t\t\t\t{\n\t\t\t\t\t//OK... will be placed to the correct ready Q in the next iteration\n\t\t\t\t}\n\t\t\t\telse\n\t\t\t\t{\n\t\t\t\t\t//\t\t\t\t\tcprintf(\"scheduler: process %d is BLOCKED/EXITED\\n\", c->proc->env_id);\n\t\t\t\t\tswitchkvm();\n\t\t\t\t\tstruct Env* __e__ = c->proc;\n\t\t\t\t\tset_cpu_proc(NULL);\n\t\t\t\t}\n\t\t\t}\n\t\t} while(next_env);\n\n\t\t//2024 - check if there's any blocked process?\n\t\tis_any_blocked = 0;\n\t\tfor (int i = 0; i < NENV; ++i)\n\t\t{\n\t\t\tif (envs[i].env_status == ENV_BLOCKED)\n\t\t\t{\n\t\t\t\tis_any_blocked = 1;\n\t\t\t\tbreak;\n\t\t\t}\n\t\t}\n\t\trelease_kspinlock(&ProcessQueues.qlock);  //release lock: to protect ready & blocked Qs in multi-CPU\n\t\t//cprintf(\"\\n[FOS_SCHEDULER] release: lock status after = %d\\n\", qlock.locked);\n\t} while (is_any_blocked > 0);\n\n\t/*2015*///No more envs... curenv doesn't exist any more! return back to command prompt\n\t{\n\t\t//cprintf(\"[sched] no envs - nothing more to do!\\n\");\n\t\tget_into_prompt();\n\t}\n\n}\n\n//=============================\n// [3] Initialize RR Scheduler:\n//=============================\nvoid sched_init_RR(uint8 quantum)\n{\n\t// Create 1 ready queue for the RR\n\tnum_of_ready_queues = 1;\n#if USE_KHEAP\n\tsched_delete_ready_queues();\n\tProcessQueues.env_ready_queues = kmalloc(sizeof(struct Env_Queue));\n\tquantums = kmalloc(num_of_ready_queues * sizeof(uint8)) ;\n#endif\n\tquantums[0] = quantum;\n\tkclock_set_quantum(quantums[0]);\n\tinit_queue(&(ProcessQueues.env_ready_queues[0]));\n\t//=========================================\n\t//DON'T CHANGE THESE LINES=================\n\tuint16 cnt0 = kclock_read_cnt0_latch() ; //read after write to ensure it's set to the desired value\n\tcprintf(\"*\tRR scheduler with initial clock = %d\\n\", cnt0);\n\tmycpu()->scheduler_status = SCH_STOPPED;\n\tscheduler_method = SCH_RR;\n\t//=========================================\n\t//=========================================\n}\n\n//===============================\n// [4] Initialize MLFQ Scheduler:\n//===============================\nvoid sched_init_MLFQ(uint8 numOfLevels, uint8 *quantumOfEachLevel)\n{\n\tpanic(\"Not implemented yet\");\n\n\n\t//=========================================\n\t//DON'T CHANGE THESE LINES=================\n\tuint16 cnt0 = kclock_read_cnt0_latch() ; //read after write to ensure it's set to the desired value\n\tcprintf(\"*\tMLFQ scheduler with initial clock = %d\\n\", cnt0);\n\tmycpu()->scheduler_status = SCH_STOPPED;\n\tscheduler_method = SCH_MLFQ;\n\t//=========================================\n\t//=========================================\n\n}\n\n//===============================\n// [5] Initialize BSD Scheduler:\n//===============================\nvoid sched_init_BSD(uint8 numOfLevels, uint8 quantum)\n{\n\tpanic(\"Not implemented yet\");\n\n\n\t//=========================================\n\t//DON'T CHANGE THESE LINES=================\n\tuint16 cnt0 = kclock_read_cnt0_latch() ; //read after write to ensure it's set to the desired value\n\tcprintf(\"*\tBSD scheduler with initial clock = %d\\n\", cnt0);\n\tmycpu()->scheduler_status = SCH_STOPPED;\n\tscheduler_method = SCH_BSD;\n\t//=========================================\n\t//=========================================\n}\n\n//======================================\n// [6] Initialize PRIORITY RR Scheduler:\n//======================================\nvoid sched_init_PRIRR(uint8 numOfPriorities, uint8 quantum, uint32 starvThresh)\n{\n\t//TODO: [PROJECT'25.IM#4] CPU SCHEDULING - #2 sched_init_PRIRR\n\t// 1. Set the number of ready queues.\n\t    num_of_ready_queues = numOfPriorities;\n\n\t// 2. Store the starvation threshold in the global variable\n\t    starvation_threshold = starvThresh;\n\n    // 3. Allocate memory for the queues and quantums\n\t    #if USE_KHEAP\n\t        sched_delete_ready_queues(); //clear old queues if any\n\t        ProcessQueues.env_ready_queues = kmalloc(num_of_ready_queues * sizeof(struct Env_Queue));\n\t        quantums = kmalloc(num_of_ready_queues * sizeof(uint8));\n\t    #endif\n\n    // 4. Initialize every queue and set the quantum\n\t    for (int i = 0; i < num_of_ready_queues; i++)\n\t    {\n\t        init_queue(&(ProcessQueues.env_ready_queues[i]));\n\t        quantums[i] = quantum; // all priorities get the same time slice\n\t    }\n\n\t// 5. Set the initial Hardware Timer to the quantum of the highest priority\n\t   kclock_set_quantum(quantums[0]);\n\n\n\t//=========================================\n\t//DON'T CHANGE THESE LINES=================\n\tuint16 cnt0 = kclock_read_cnt0_latch() ; //read after write to ensure it's set to the desired value\n\tcprintf(\"*\tPRIORITY RR scheduler with initial clock = %d\\n\", cnt0);\n\tmycpu()->scheduler_status = SCH_STOPPED;\n\tscheduler_method = SCH_PRIRR;\n\t//=========================================\n\t//=========================================\n}\n\n//=========================\n// [7] RR Scheduler:\n//=========================\nstruct Env* fos_scheduler_RR()\n{\n\t// Implement simple round-robin scheduling.\n\t// Pick next environment from the ready queue,\n\t// and switch to such environment if found.\n\t// It's OK to choose the previously running env if no other env\n\t// is runnable.\n\t/*To protect process Qs (or info of current process) in multi-CPU************************/\n\tif(!holding_kspinlock(&ProcessQueues.qlock))\n\t\tpanic(\"fos_scheduler_RR: q.lock is not held by this CPU while it's expected to be.\");\n\t/****************************************************************************************/\n\tstruct Env *next_env = NULL;\n\tstruct Env *cur_env = get_cpu_proc();\n\t//If the curenv is still exist, then insert it again in the ready queue\n\tif (cur_env != NULL)\n\t{\n\t\t//cprintf(\"RR: [%d] with status %d will be added to ready Q\", cur_env->env_id, cur_env->env_status);\n\t\tenqueue(&(ProcessQueues.env_ready_queues[0]), cur_env);\n\t}\n\n\t//Pick the next environment from the ready queue\n\tnext_env = dequeue(&(ProcessQueues.env_ready_queues[0]));\n\n\t//Reset the quantum\n\t//2017: Reset the value of CNT0 for the next clock interval\n\tkclock_set_quantum(quantums[0]);\n\t//uint16 cnt0 = kclock_read_cnt0_latch() ;\n\t//cprintf(\"CLOCK INTERRUPT AFTER RESET: Counter0 Value = %d\\n\", cnt0 );\n\n\treturn next_env;\n}\n\n//=========================\n// [8] MLFQ Scheduler:\n//=========================\nstruct Env* fos_scheduler_MLFQ()\n{\n\t//Apply the MLFQ with the specified levels to pick up the next environment\n\t//Note: the \"curenv\" (if exist) should be placed in its correct queue\n\t/*To protect process Qs (or info of current process) in multi-CPU************************/\n\tif(!holding_kspinlock(&ProcessQueues.qlock))\n\t\tpanic(\"fos_scheduler_MLFQ: q.lock is not held by this CPU while it's expected to be.\");\n\t/****************************************************************************************/\n\tpanic(\"Not implemented yet\");\n}\n\n//=========================\n// [9] BSD Scheduler:\n//=========================\nstruct Env* fos_scheduler_BSD()\n{\n\t/*To protect process Qs (or info of current process) in multi-CPU************************/\n\tif(!holding_kspinlock(&ProcessQueues.qlock))\n\t\tpanic(\"fos_scheduler_BSD: q.lock is not held by this CPU while it's expected to be.\");\n\t/****************************************************************************************/\n\tpanic(\"Not implemented yet\");\n}\n\n//=============================\n// [10] PRIORITY RR Scheduler:\n//=============================\nstruct Env* fos_scheduler_PRIRR()\n{\n\t//TODO: [PROJECT'25.IM#4] CPU SCHEDULING - #3 fos_scheduler_PRIRR\n\t// 1. Ensure we hold the lock\n\tif(!holding_kspinlock(&ProcessQueues.qlock))\n\t\tpanic(\"fos_scheduler_PRIRR: q.lock is not held by this CPU while it's expected to be.\");\n\n\tstruct Env *next_env = NULL;\n\tstruct Env *cur_env = get_cpu_proc();\n\n\t// 2. If there is a currently running process, return it to the Ready Queue\n\tif (cur_env != NULL)\n\t{\n\t\tcur_env->starvation_counter=0;\n\t\tsched_insert_ready(cur_env);\n\t}\n\n\t// 3. Find the highest priority queue that is not empty\n\tfor (int i = 0; i < num_of_ready_queues ; i++)\n\t{\n\t\tif (queue_size(&(ProcessQueues.env_ready_queues[i])) > 0)\n\t\t{\n\t\t\t// 4. Dequeue the first process\n\t\t\tnext_env = dequeue(&(ProcessQueues.env_ready_queues[i]));\n\n\t\t\t// 5. Set the CPU Quantum\n\t\t\tkclock_set_quantum(quantums[i]);\n\n\t\t\tnext_env->starvation_counter=0;\n\t\t\t// 6. Return next process\n\t\t\treturn next_env;\n\t\t}\n\t}\n\n\t// 7. No process found\n\treturn NULL;\n}\n\n//========================================\n// [11] Clock Interrupt Handler\n//\t  (Automatically Called Every Quantum)\n//========================================\nvoid clock_interrupt_handler(struct Trapframe* tf)\n{\n\t\t//TODO: [PROJECT'25.IM#4] CPU SCHEDULING - #4 clock_interrupt_handler\n\tif (isSchedMethodPRIRR())\n\t\t{\n\n\t\t    acquire_kspinlock(&ProcessQueues.qlock);\n\t\t\tfor (int i = 0; i < NENV; i++)\n\t\t\t{\n\t\t\t\tif (envs[i].env_status == ENV_READY)\n\t\t\t\t{\n\t\t\t\t\tenvs[i].starvation_counter++;\n\n\t\t\t\t\t// 1. Check Threshold\n\t\t\t\t\tif (envs[i].starvation_counter >= starvation_threshold)\n\t\t\t\t\t{\n\t\t\t\t\t\tenvs[i].starvation_counter = 0;\n\n\t\t\t\t\t\t// 2. Boost priority if not already at Highest (0)\n\t\t\t\t\t\tif (envs[i].priority > 0)\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\tsched_remove_ready(&envs[i]);\n\n\t\t\t\t\t\t\t// 3. Decrement to boost (Move closer to 0)\n\t\t\t\t\t\t\tenvs[i].priority--;\n\n\t\t\t\t\t\t\tsched_insert_ready(&envs[i]);\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\n\t\t\trelease_kspinlock(&ProcessQueues.qlock);\n\t}\n\n\t/********DON'T CHANGE THESE LINES***********/\n\tticks++ ;\n\tstruct Env* p = get_cpu_proc();\n\tif (p == NULL)\n\t{\n//\t\tcprintf(\"\\n??????????????????? p == NULL ?????????????????????\\n\");\n//\t\tcprintf(\"IRQ0 mask = %d\\n\", irq_get_mask(0));\n//\t\tcprintf(\"caller IEN = %d, EIP = %x\\n\", tf->tf_eflags & FL_IF, tf->tf_eip);\n//\t\tcprintf(\"scheduler status = %d\\n\", mycpu()->scheduler_status) ;\n\t\t//panic(\"clock_interrupt_handler: no running process at the cpu! unexpected clock interrupt in the kernel!\");\n\t}\n\telse\n\t{\n\t\tp->nClocks++ ;\n\t\tif(isPageReplacmentAlgorithmLRU(PG_REP_LRU_TIME_APPROX))\n\t\t{\n\t\t\tupdate_WS_time_stamps();\n\t\t}\n\t\t//cprintf(\"\\n***************\\nClock Handler\\n***************\\n\") ;\n\t\t//fos_scheduler();\n\t\tyield();\n\t}\n\t/*****************************************/\n}\n\n//===================================================================\n// [9] Update LRU Timestamp of WS Elements\n//\t  (Automatically Called Every Quantum in case of LRU Time Approx)\n//===================================================================\nvoid update_WS_time_stamps()\n{\n\t//TODO: [PROJECT'25.IM#6] FAULT HANDLER II - #1 update_WS_time_stamps\n\t//Your code is here\n\t//Comment the following line\n\tpanic(\"update_WS_time_stamps is not implemented yet...!!\");\n\n}\n"}, {"name": "kern/conc/ksemaphore.c", "code": "// Kernel-level Semaphore\n\n#include \"inc/types.h\"\n#include \"inc/x86.h\"\n#include \"inc/memlayout.h\"\n#include \"inc/mmu.h\"\n#include \"inc/environment_definitions.h\"\n#include \"inc/assert.h\"\n#include \"inc/string.h\"\n#include \"ksemaphore.h\"\n#include \"channel.h\"\n#include \"../cpu/cpu.h\"\n#include \"../proc/user_environment.h\"\n\nvoid init_ksemaphore(struct ksemaphore *ksem, int value, char *name)\n{\n\tinit_channel(&(ksem->chan), \"ksemaphore channel\");\n\tinit_kspinlock(&(ksem->lk), \"lock of ksemaphore\");\n\tstrcpy(ksem->name, name);\n\tksem->count = value;\n}\n\nvoid wait_ksemaphore(struct ksemaphore *ksem)\n{\n    //TODO: [PROJECT'25.IM#5] KERNEL PROTECTION: #6 SEMAPHORE - wait_ksemaphore [Done]\n    //Your code is here\n    //Comment the following line\n    //panic(\"wait_ksemaphore() is not implemented yet...!!\");\n\n    //decrement value\n    acquire_kspinlock(&(ksem->lk));\n    ksem->count--;\n\n    if (ksem->count < 0)\n    {\n        sleep(&(ksem->chan), &(ksem->lk));\n    }\n    release_kspinlock(&(ksem->lk));\n}\n\nvoid signal_ksemaphore(struct ksemaphore *ksem)\n{\n    //TODO: [PROJECT'25.IM#5] KERNEL PROTECTION: #7 SEMAPHORE - signal_ksemaphore [Done]\n    //Your code is here\n    //Comment the following line\n    //panic(\"signal_ksemaphore() is not implemented yet...!!\");\n\n    //increment value\n    acquire_kspinlock(&(ksem->lk));\n    ksem->count++;\n\n    if (ksem->count <= 0)\n    {\n        wakeup_one(&(ksem->chan));\n    }\n    release_kspinlock(&(ksem->lk));\n}\n\n\n"}, {"name": "user/arrayOperations_Master.c", "code": "// Scenario that tests the usage of shared variables\n#include <inc/lib.h>\n\nvoid InitializeAscending(int *Elements, int NumOfElements);\nvoid InitializeDescending(int *Elements, int NumOfElements);\nvoid InitializeSemiRandom(int *Elements, int NumOfElements);\nuint32 CheckSorted(int *Elements, int NumOfElements);\nvoid ArrayStats(int *Elements, int NumOfElements, int64 *mean, int64 *var);\n\nvoid\n_main(void)\n{\n\t/*[1] CREATE SEMAPHORES*/\n\tstruct semaphore ready = create_semaphore(\"Ready\", 0);\n\tstruct semaphore finished = create_semaphore(\"Finished\", 0);\n\tstruct semaphore cons_mutex = create_semaphore(\"Console Mutex\", 1);\n\n\t/*[2] RUN THE SLAVES PROGRAMS*/\n\tint numOfSlaveProgs = 3 ;\n\n\tint32 envIdQuickSort = sys_create_env(\"slave_qs\", (myEnv->page_WS_max_size),(myEnv->SecondListSize) ,(myEnv->percentage_of_WS_pages_to_be_removed));\n\tint32 envIdMergeSort = sys_create_env(\"slave_ms\", (myEnv->page_WS_max_size),(myEnv->SecondListSize), (myEnv->percentage_of_WS_pages_to_be_removed));\n\tint32 envIdStats = sys_create_env(\"slave_stats\", (myEnv->page_WS_max_size), (myEnv->SecondListSize),(myEnv->percentage_of_WS_pages_to_be_removed));\n\n\tif (envIdQuickSort == E_ENV_CREATION_ERROR || envIdMergeSort == E_ENV_CREATION_ERROR || envIdStats == E_ENV_CREATION_ERROR)\n\t\tpanic(\"NO AVAILABLE ENVs...\");\n\n\tsys_run_env(envIdQuickSort);\n\tsys_run_env(envIdMergeSort);\n\tsys_run_env(envIdStats);\n\n\t/*[3] CREATE SHARED VARIABLES*/\n\t//Share the cons_mutex owner ID\n\tint *mutexOwnerID = smalloc(\"cons_mutex ownerID\", sizeof(int) , 0) ;\n\t*mutexOwnerID = myEnv->env_id ;\n\n\tint ret;\n\tchar Chose;\n\tchar Line[30];\n\tint NumOfElements;\n\tint *Elements = NULL;\n\t//lock the console\n\twait_semaphore(cons_mutex);\n\t{\n\t\tcprintf(\"\\n\");\n\t\tcprintf(\"!!!!!!!!!!!!!!!!!!!!!!!!!!!!\\n\");\n\t\tcprintf(\"!!!   ARRAY OOERATIONS   !!!\\n\");\n\t\tcprintf(\"!!!!!!!!!!!!!!!!!!!!!!!!!!!!\\n\");\n\t\tcprintf(\"\\n\");\n\n\t\treadline(\"Enter the number of elements: \", Line);\n\n\t\t//Create the shared array & its size\n\t\tint *arrSize = smalloc(\"arrSize\", sizeof(int) , 0) ;\n\t\t*arrSize = strtol(Line, NULL, 10) ;\n\t\tNumOfElements = *arrSize;\n\t\tElements = smalloc(\"arr\", sizeof(int) * NumOfElements , 0) ;\n\n\t\tcprintf(\"Chose the initialization method:\\n\") ;\n\t\tcprintf(\"a) Ascending\\n\") ;\n\t\tcprintf(\"b) Descending\\n\") ;\n\t\tcprintf(\"c) Semi random\\n\");\n\t\tdo\n\t\t{\n\t\t\tcprintf(\"Select: \") ;\n\t\t\tChose = getchar() ;\n\t\t\tcputchar(Chose);\n\t\t\tcputchar('\\n');\n\t\t} while (Chose != 'a' && Chose != 'b' && Chose != 'c');\n\n\t}\n\tsignal_semaphore(cons_mutex);\n\t//unlock the console\n\n\tint  i ;\n\tswitch (Chose)\n\t{\n\tcase 'a':\n\t\tInitializeAscending(Elements, NumOfElements);\n\t\tbreak ;\n\tcase 'b':\n\t\tInitializeDescending(Elements, NumOfElements);\n\t\tbreak ;\n\tcase 'c':\n\t\tInitializeSemiRandom(Elements, NumOfElements);\n\t\tbreak ;\n\tdefault:\n\t\tInitializeSemiRandom(Elements, NumOfElements);\n\t}\n\n\t/*[4] SIGNAL READY TO THE SLAVES*/\n\tfor (int i = 0; i < numOfSlaveProgs; ++i) {\n\t\tsignal_semaphore(ready);\n\t}\n\n\t/*[5] WAIT TILL ALL SLAVES FINISHED*/\n\tfor (int i = 0; i < numOfSlaveProgs; ++i) {\n\t\twait_semaphore(finished);\n\t}\n\n\t/*[6] GET THEIR RESULTS*/\n\tint *quicksortedArr = NULL;\n\tint *mergesortedArr = NULL;\n\tint64 *mean = NULL;\n\tint64 *var = NULL;\n\tint *min = NULL;\n\tint *max = NULL;\n\tint *med = NULL;\n\tquicksortedArr = sget(envIdQuickSort, \"quicksortedArr\") ;\n\tmergesortedArr = sget(envIdMergeSort, \"mergesortedArr\") ;\n\tmean = sget(envIdStats, \"mean\") ;\n\tvar = sget(envIdStats,\"var\") ;\n\tmin = sget(envIdStats,\"min\") ;\n\tmax = sget(envIdStats,\"max\") ;\n\tmed = sget(envIdStats,\"med\") ;\n\n\t/*[7] VALIDATE THE RESULTS*/\n\tuint32 sorted = CheckSorted(quicksortedArr, NumOfElements);\n\tif(sorted == 0) panic(\"The array is NOT quick-sorted correctly\") ;\n\tsorted = CheckSorted(mergesortedArr, NumOfElements);\n\tif(sorted == 0) panic(\"The array is NOT merge-sorted correctly\") ;\n\tint64 correctMean, correctVar ;\n\tArrayStats(Elements, NumOfElements, &correctMean , &correctVar);\n\tint correctMin = quicksortedArr[0];\n\tint last = NumOfElements-1;\n//\tint middle = (NumOfElements-1)/2;\n//\tif (NumOfElements % 2 != 0)\n//\t\tmiddle--;\n\tint middle = (NumOfElements+1)/2 - 1; /*-1 to make it ZERO-Based*/\n\n\tint correctMax = quicksortedArr[last];\n\tint correctMed = quicksortedArr[middle];\n\twait_semaphore(cons_mutex);\n\t{\n\t\t//cprintf(\"Array is correctly sorted\\n\");\n\t\tcprintf(\"mean = %lld, var = %lld, min = %d, max = %d, med = %d\\n\", *mean, *var, *min, *max, *med);\n\t\tcprintf(\"mean = %lld, var = %lld, min = %d, max = %d, med = %d\\n\", correctMean, correctVar, correctMin, correctMax, correctMed);\n\t}\n\tsignal_semaphore(cons_mutex);\n\tif(*mean != correctMean || *var != correctVar|| *min != correctMin || *max != correctMax || *med != correctMed)\n\t\tpanic(\"The array STATS are NOT calculated correctly\") ;\n\n\tcprintf(\"Congratulations!! Scenario of Using the Semaphores & Shared Variables completed successfully!!\\n\\n\\n\");\n\n\treturn;\n}\n\n\nuint32 CheckSorted(int *Elements, int NumOfElements)\n{\n\tuint32 Sorted = 1 ;\n\tint i ;\n\tfor (i = 0 ; i < NumOfElements - 1; i++)\n\t{\n\t\tif (Elements[i] > Elements[i+1])\n\t\t{\n\t\t\tSorted = 0 ;\n\t\t\tbreak;\n\t\t}\n\t}\n\treturn Sorted ;\n}\n\nvoid InitializeAscending(int *Elements, int NumOfElements)\n{\n\tint i ;\n\tfor (i = 0 ; i < NumOfElements ; i++)\n\t{\n\t\t(Elements)[i] = i ;\n\t}\n\n}\n\nvoid InitializeDescending(int *Elements, int NumOfElements)\n{\n\tint i ;\n\tfor (i = 0 ; i < NumOfElements ; i++)\n\t{\n\t\tElements[i] = NumOfElements - i - 1 ;\n\t}\n\n}\n\nvoid InitializeSemiRandom(int *Elements, int NumOfElements)\n{\n\tint i ;\n\tint Repetition = NumOfElements / 3 ;\n\tfor (i = 0 ; i < NumOfElements ; i++)\n\t{\n\t\tElements[i] = i % Repetition ;\n\t\t//cprintf(\"Elements[%d] = %d\\n\",i, Elements[i]);\n\t}\n\n}\n\nvoid ArrayStats(int *Elements, int NumOfElements, int64 *mean, int64 *var)\n{\n\tint i ;\n\t*mean =0 ;\n\tfor (i = 0 ; i < NumOfElements ; i++)\n\t{\n\t\t*mean += Elements[i];\n\t}\n\t*mean /= NumOfElements;\n\t*var = 0;\n\tfor (i = 0 ; i < NumOfElements ; i++)\n\t{\n\t\t*var += (int64) ((Elements[i] - *mean)*(Elements[i] - *mean));\n//\t\tif (i%1000 == 0)\n//\t\t\tcprintf(\"current #elements = %d, current var = %lld\\n\", i , *var);\n\t}\n\t*var /= NumOfElements;\n}\n"}, {"name": "user/arrayOperations_quicksort.c", "code": "#include <inc/lib.h>\n\n//Functions Declarations\nvoid Swap(int *Elements, int First, int Second);\nvoid PrintElements(int *Elements, int NumOfElements);\n\nvoid QuickSort(int *Elements, int NumOfElements);\nvoid QSort(int *Elements,int NumOfElements, int startIndex, int finalIndex);\n\nvoid _main(void)\n{\n\tint32 envID = sys_getenvid();\n\tint32 parentenvID = sys_getparentenvid();\n\n\tint ret;\n\t/*[1] GET SEMAPHORES*/\n\tstruct semaphore ready = get_semaphore(parentenvID, \"Ready\");\n\tstruct semaphore finished = get_semaphore(parentenvID, \"Finished\");\n\n\t/*[2] WAIT A READY SIGNAL FROM THE MASTER*/\n\twait_semaphore(ready);\n\n\t/*[3] GET SHARED VARs*/\n\t//Get the cons_mutex ownerID\n\tint* consMutexOwnerID = sget(parentenvID, \"cons_mutex ownerID\") ;\n\tstruct semaphore cons_mutex = get_semaphore(*consMutexOwnerID, \"Console Mutex\");\n\n\t//Get the shared array & its size\n\tint *numOfElements = NULL;\n\tint *sharedArray = NULL;\n\tsharedArray = sget(parentenvID,\"arr\") ;\n\tnumOfElements = sget(parentenvID,\"arrSize\") ;\n\n\t/*[4] DO THE JOB*/\n\t//take a copy from the original array\n\tint *sortedArray;\n\tsortedArray = smalloc(\"quicksortedArr\", sizeof(int) * *numOfElements, 0) ;\n\tint i ;\n\tfor (i = 0 ; i < *numOfElements ; i++)\n\t{\n\t\tsortedArray[i] = sharedArray[i];\n\t}\n\tQuickSort(sortedArray, *numOfElements);\n\n\twait_semaphore(cons_mutex);\n\t{\n\t\tcprintf(\"Quick sort is Finished!!!!\\n\") ;\n\t\tcprintf(\"will notify the master now...\\n\");\n\t\tcprintf(\"Quick sort says GOOD BYE :)\\n\") ;\n\t}\n\tsignal_semaphore(cons_mutex);\n\n\t/*[5] DECLARE FINISHING*/\n\tsignal_semaphore(finished);\n}\n\n///Quick sort\nvoid QuickSort(int *Elements, int NumOfElements)\n{\n\tQSort(Elements, NumOfElements, 0, NumOfElements-1) ;\n}\n\n\nvoid QSort(int *Elements,int NumOfElements, int startIndex, int finalIndex)\n{\n\tif (startIndex >= finalIndex) return;\n\tint pvtIndex = RANDU(startIndex, finalIndex) ;\n\tSwap(Elements, startIndex, pvtIndex);\n\n\tint i = startIndex+1, j = finalIndex;\n\n\twhile (i <= j)\n\t{\n\t\twhile (i <= finalIndex && Elements[startIndex] >= Elements[i]) i++;\n\t\twhile (j > startIndex && Elements[startIndex] <= Elements[j]) j--;\n\n\t\tif (i <= j)\n\t\t{\n\t\t\tSwap(Elements, i, j);\n\t\t}\n\t}\n\n\tSwap( Elements, startIndex, j);\n\n\tQSort(Elements, NumOfElements, startIndex, j - 1);\n\tQSort(Elements, NumOfElements, i, finalIndex);\n\n\t//cprintf(\"qs,after sorting: start = %d, end = %d\\n\", startIndex, finalIndex);\n\n}\n\n///Private Functions\n\n\nvoid Swap(int *Elements, int First, int Second)\n{\n\tint Tmp = Elements[First] ;\n\tElements[First] = Elements[Second] ;\n\tElements[Second] = Tmp ;\n}\n\n\nvoid PrintElements(int *Elements, int NumOfElements)\n{\n\tint i ;\n\tint NumsPerLine = 20 ;\n\tfor (i = 0 ; i < NumOfElements-1 ; i++)\n\t{\n\t\tif (i%NumsPerLine == 0)\n\t\t\tcprintf(\"\\n\");\n\t\tcprintf(\"%d, \",Elements[i]);\n\t}\n\tcprintf(\"%d\\n\",Elements[i]);\n\n}\n"}, {"name": "user/arrayOperations_mergesort.c", "code": "#include <inc/lib.h>\n\n//Functions Declarations\nvoid Swap(int *Elements, int First, int Second);\nvoid PrintElements(int *Elements, int NumOfElements);\n\nvoid MSort(int* A, int p, int r);\nvoid Merge(int* A, int p, int q, int r);\n\n//int *Left;\n//int *Right;\n\nvoid _main(void)\n{\n\tint32 parentenvID = sys_getparentenvid();\n\n\tint ret;\n\n\t/*[1] GET SEMAPHORES*/\n\tstruct semaphore ready = get_semaphore(parentenvID, \"Ready\");\n\tstruct semaphore finished = get_semaphore(parentenvID, \"Finished\");\n\n\t/*[2] WAIT A READY SIGNAL FROM THE MASTER*/\n\twait_semaphore(ready);\n\n\t/*[3] GET SHARED VARs*/\n\t//Get the cons_mutex ownerID\n\tint* consMutexOwnerID = sget(parentenvID, \"cons_mutex ownerID\") ;\n\tstruct semaphore cons_mutex = get_semaphore(*consMutexOwnerID, \"Console Mutex\");\n\n\t//Get the shared array & its size\n\tint *numOfElements = NULL;\n\tint *sharedArray = NULL;\n\tsharedArray = sget(parentenvID, \"arr\") ;\n\tnumOfElements = sget(parentenvID, \"arrSize\") ;\n\t//PrintElements(sharedArray, *numOfElements);\n\n\t/*[4] DO THE JOB*/\n\t//take a copy from the original array\n\tint *sortedArray;\n\n\tsortedArray = smalloc(\"mergesortedArr\", sizeof(int) * *numOfElements, 0) ;\n\tint i ;\n\tfor (i = 0 ; i < *numOfElements ; i++)\n\t{\n\t\tsortedArray[i] = sharedArray[i];\n\t}\n//\t//Create two temps array for \"left\" & \"right\"\n//\tLeft = smalloc(\"mergesortLeftArr\", sizeof(int) * (*numOfElements), 1) ;\n//\tRight = smalloc(\"mergesortRightArr\", sizeof(int) * (*numOfElements), 1) ;\n\n\tMSort(sortedArray, 1, *numOfElements);\n\n\twait_semaphore(cons_mutex);\n\t{\n\t\tcprintf(\"Merge sort is Finished!!!!\\n\") ;\n\t\tcprintf(\"will notify the master now...\\n\");\n\t\tcprintf(\"Merge sort says GOOD BYE :)\\n\") ;\n\t}\n\tsignal_semaphore(cons_mutex);\n\n\t/*[5] DECLARE FINISHING*/\n\tsignal_semaphore(finished);\n}\n\nvoid Swap(int *Elements, int First, int Second)\n{\n\tint Tmp = Elements[First] ;\n\tElements[First] = Elements[Second] ;\n\tElements[Second] = Tmp ;\n}\n\n\nvoid PrintElements(int *Elements, int NumOfElements)\n{\n\tint i ;\n\tint NumsPerLine = 20 ;\n\tfor (i = 0 ; i < NumOfElements-1 ; i++)\n\t{\n\t\tif (i%NumsPerLine == 0)\n\t\t\tcprintf(\"\\n\");\n\t\tcprintf(\"%d, \",Elements[i]);\n\t}\n\tcprintf(\"%d\\n\",Elements[i]);\n\n}\n\n\nvoid MSort(int* A, int p, int r)\n{\n\tif (p >= r)\n\t{\n\t\treturn;\n\t}\n\n\tint q = (p + r) / 2;\n\n\tMSort(A, p, q);\n//\tcprintf(\"LEFT is sorted: from %d to %d\\n\", p, q);\n\n\tMSort(A, q + 1, r);\n//\tcprintf(\"RIGHT is sorted: from %d to %d\\n\", q+1, r);\n\n\tMerge(A, p, q, r);\n\t//cprintf(\"[%d %d] + [%d %d] = [%d %d]\\n\", p, q, q+1, r, p, r);\n\n}\n\nvoid Merge(int* A, int p, int q, int r)\n{\n\tint leftCapacity = q - p + 1;\n\n\tint rightCapacity = r - q;\n\n\tint leftIndex = 0;\n\n\tint rightIndex = 0;\n\n\tint* Left = malloc(sizeof(int) * leftCapacity);\n\n\tint* Right = malloc(sizeof(int) * rightCapacity);\n\n\tint i, j, k;\n\tfor (i = 0; i < leftCapacity; i++)\n\t{\n\t\tLeft[i] = A[p + i - 1];\n\t}\n\tfor (j = 0; j < rightCapacity; j++)\n\t{\n\t\tRight[j] = A[q + j];\n\t}\n\n\tfor ( k = p; k <= r; k++)\n\t{\n\t\tif (leftIndex < leftCapacity && rightIndex < rightCapacity)\n\t\t{\n\t\t\tif (Left[leftIndex] < Right[rightIndex] )\n\t\t\t{\n\t\t\t\tA[k - 1] = Left[leftIndex++];\n\t\t\t}\n\t\t\telse\n\t\t\t{\n\t\t\t\tA[k - 1] = Right[rightIndex++];\n\t\t\t}\n\t\t}\n\t\telse if (leftIndex < leftCapacity)\n\t\t{\n\t\t\tA[k - 1] = Left[leftIndex++];\n\t\t}\n\t\telse\n\t\t{\n\t\t\tA[k - 1] = Right[rightIndex++];\n\t\t}\n\t}\n\n\tfree(Left);\n\tfree(Right);\n\n}\n\n"}, {"name": "user/arrayOperations_stats.c", "code": "#include <inc/lib.h>\n\n//Functions Declarations\nvoid Swap(int *Elements, int First, int Second);\nvoid ArrayStats(int *Elements, int NumOfElements, int64 *mean, int64 *var, int *min, int *max, int *med);\nint KthElement(int *Elements, int NumOfElements, int k);\nint QSort(int *Elements,int NumOfElements, int startIndex, int finalIndex, int kIndex);\n\nvoid _main(void)\n{\n\tint32 envID = sys_getenvid();\n\tint32 parentenvID = sys_getparentenvid();\n\n\tint ret;\n\t/*[1] GET SEMAPHORES*/\n\tstruct semaphore ready = get_semaphore(parentenvID, \"Ready\");\n\tstruct semaphore finished = get_semaphore(parentenvID, \"Finished\");\n\n\t/*[2] WAIT A READY SIGNAL FROM THE MASTER*/\n\twait_semaphore(ready);\n\n\t/*[3] GET SHARED VARs*/\n\t//Get the cons_mutex ownerID\n\tint* consMutexOwnerID = sget(parentenvID, \"cons_mutex ownerID\") ;\n\tstruct semaphore cons_mutex = get_semaphore(*consMutexOwnerID, \"Console Mutex\");\n\n\t//Get the shared array & its size\n\tint *numOfElements = NULL;\n\tint *sharedArray = NULL;\n\tsharedArray = sget(parentenvID,\"arr\") ;\n\tnumOfElements = sget(parentenvID,\"arrSize\") ;\n\n\t/*[4] DO THE JOB*/\n\tint64 mean;\n\tint64 var ;\n\tint min ;\n\tint max ;\n\tint med ;\n\n\t//take a copy from the original array\n\tint *tmpArray;\n\ttmpArray = smalloc(\"tmpArr\", sizeof(int) * *numOfElements, 0) ;\n\tint i ;\n\tfor (i = 0 ; i < *numOfElements ; i++)\n\t{\n\t\ttmpArray[i] = sharedArray[i];\n\t}\n\n\tArrayStats(tmpArray ,*numOfElements, &mean, &var, &min, &max, &med);\n\n\twait_semaphore(cons_mutex);\n\t{\n\t\tcprintf(\"Stats Calculations are Finished!!!!\\n\") ;\n\t\tcprintf(\"will share the rsults & notify the master now...\\n\");\n\t}\n\tsignal_semaphore(cons_mutex);\n\n\t/*[3] SHARE THE RESULTS & DECLARE FINISHING*/\n\tint64 *shMean, *shVar;\n\tint *shMin, *shMax, *shMed;\n\tshMean = smalloc(\"mean\", sizeof(int64), 0) ; *shMean = mean;\n\tshVar = smalloc(\"var\", sizeof(int64), 0) ; *shVar = var;\n\tshMin = smalloc(\"min\", sizeof(int), 0) ; *shMin = min;\n\tshMax = smalloc(\"max\", sizeof(int), 0) ; *shMax = max;\n\tshMed = smalloc(\"med\", sizeof(int), 0) ; *shMed = med;\n\n\twait_semaphore(cons_mutex);\n\t{\n\t\tcprintf(\"Stats app says GOOD BYE :)\\n\") ;\n\t}\n\tsignal_semaphore(cons_mutex);\n\n\tsignal_semaphore(finished);\n\n}\n\n\n\n///Kth Element\nint KthElement(int *Elements, int NumOfElements, int k)\n{\n\treturn QSort(Elements, NumOfElements, 0, NumOfElements-1, k-1) ;\n}\n\n\nint QSort(int *Elements,int NumOfElements, int startIndex, int finalIndex, int kIndex)\n{\n\tif (startIndex >= finalIndex) return Elements[finalIndex];\n\n\tint pvtIndex = RANDU(startIndex, finalIndex) ;\n\tSwap(Elements, startIndex, pvtIndex);\n\n\tint i = startIndex+1, j = finalIndex;\n\n\twhile (i <= j)\n\t{\n\t\twhile (i <= finalIndex && Elements[startIndex] >= Elements[i]) i++;\n\t\twhile (j > startIndex && Elements[startIndex] < Elements[j]) j--;\n\n\t\tif (i <= j)\n\t\t{\n\t\t\tSwap(Elements, i, j);\n\t\t}\n\t}\n\n\tSwap( Elements, startIndex, j);\n\n\tif (kIndex == j)\n\t\treturn Elements[kIndex] ;\n\telse if (kIndex < j)\n\t\treturn QSort(Elements, NumOfElements, startIndex, j - 1, kIndex);\n\telse\n\t\treturn QSort(Elements, NumOfElements, i, finalIndex, kIndex);\n}\n\nvoid ArrayStats(int *Elements, int NumOfElements, int64 *mean, int64 *var, int *min, int *max, int *med)\n{\n\tint i ;\n\t*mean =0 ;\n\t*min = 0x7FFFFFFF ;\n\t*max = 0x80000000 ;\n\tfor (i = 0 ; i < NumOfElements ; i++)\n\t{\n\t\t(*mean) += Elements[i];\n\t\tif (Elements[i] < (*min))\n\t\t{\n\t\t\t(*min) = Elements[i];\n\t\t}\n\t\tif (Elements[i] > (*max))\n\t\t{\n\t\t\t(*max) = Elements[i];\n\t\t}\n\t}\n\n\t(*med) = KthElement(Elements, NumOfElements, (NumOfElements+1)/2);\n\n\t(*mean) /= NumOfElements;\n\t(*var) = 0;\n\tfor (i = 0 ; i < NumOfElements ; i++)\n\t{\n\t\t(*var) += (int64)((Elements[i] - (*mean))*(Elements[i] - (*mean)));\n\t}\n\t(*var) /= NumOfElements;\n}\n\n///Private Functions\nvoid Swap(int *Elements, int First, int Second)\n{\n\tint Tmp = Elements[First] ;\n\tElements[First] = Elements[Second] ;\n\tElements[Second] = Tmp ;\n}\n\n\n\n"}, {"name": "kern/trap/fault_handler.c", "code": "/*\n * fault_handler.c\n *\n * Created on: Oct 12, 2022\n * Author: HP\n */\n\n#include \"trap.h\"\n#include <kern/proc/user_environment.h>\n#include <kern/cpu/sched.h>\n#include <kern/cpu/cpu.h>\n#include <kern/disk/pagefile_manager.h>\n#include <kern/mem/memory_manager.h>\n#include <kern/mem/kheap.h>\n#include <inc/memlayout.h>\n\n#ifndef FOS_BOOL_H\n#define FOS_BOOL_H\n\n#ifndef __cplusplus\ntypedef int bool;\n#define true 1\n#define false 0\n#endif\n\n#endif\n\nuint8 bypassInstrLength = 0;\n\n//===============================\n// REPLACEMENT STRATEGIES\n//===============================\nvoid setPageReplacmentAlgorithmLRU(int LRU_TYPE)\n{\n\tassert(LRU_TYPE == PG_REP_LRU_TIME_APPROX || LRU_TYPE == PG_REP_LRU_LISTS_APPROX);\n\t_PageRepAlgoType = LRU_TYPE ;\n}\nvoid setPageReplacmentAlgorithmCLOCK(){_PageRepAlgoType = PG_REP_CLOCK;}\nvoid setPageReplacmentAlgorithmFIFO(){_PageRepAlgoType = PG_REP_FIFO;}\nvoid setPageReplacmentAlgorithmModifiedCLOCK(){_PageRepAlgoType = PG_REP_MODIFIEDCLOCK;}\nvoid setPageReplacmentAlgorithmDynamicLocal(){_PageRepAlgoType = PG_REP_DYNAMIC_LOCAL;}\nvoid setPageReplacmentAlgorithmNchanceCLOCK(int PageWSMaxSweeps){_PageRepAlgoType = PG_REP_NchanceCLOCK;  page_WS_max_sweeps = PageWSMaxSweeps;}\nvoid setFASTNchanceCLOCK(bool fast){ FASTNchanceCLOCK = fast; };\nvoid setPageReplacmentAlgorithmOPTIMAL(){ _PageRepAlgoType = PG_REP_OPTIMAL; };\n\nuint32 isPageReplacmentAlgorithmLRU(int LRU_TYPE){return _PageRepAlgoType == LRU_TYPE ? 1 : 0;}\nuint32 isPageReplacmentAlgorithmCLOCK(){if(_PageRepAlgoType == PG_REP_CLOCK) return 1; return 0;}\nuint32 isPageReplacmentAlgorithmFIFO(){if(_PageRepAlgoType == PG_REP_FIFO) return 1; return 0;}\nuint32 isPageReplacmentAlgorithmModifiedCLOCK(){if(_PageRepAlgoType == PG_REP_MODIFIEDCLOCK) return 1; return 0;}\nuint32 isPageReplacmentAlgorithmDynamicLocal(){if(_PageRepAlgoType == PG_REP_DYNAMIC_LOCAL) return 1; return 0;}\nuint32 isPageReplacmentAlgorithmNchanceCLOCK(){if(_PageRepAlgoType == PG_REP_NchanceCLOCK) return 1; return 0;}\nuint32 isPageReplacmentAlgorithmOPTIMAL(){if(_PageRepAlgoType == PG_REP_OPTIMAL) return 1; return 0;}\n\n//===============================\n// PAGE BUFFERING\n//===============================\nvoid enableModifiedBuffer(uint32 enableIt){_EnableModifiedBuffer = enableIt;}\nuint8 isModifiedBufferEnabled(){  return _EnableModifiedBuffer ; }\n\nvoid enableBuffering(uint32 enableIt){_EnableBuffering = enableIt;}\nuint8 isBufferingEnabled(){  return _EnableBuffering ; }\n\nvoid setModifiedBufferLength(uint32 length) { _ModifiedBufferLength = length;}\nuint32 getModifiedBufferLength() { return _ModifiedBufferLength;}\n\n//===============================\n// FAULT HANDLERS\n//===============================\n\nvoid fault_handler_init()\n{\n\tsetPageReplacmentAlgorithmOPTIMAL();\n\tsetPageReplacmentAlgorithmCLOCK();\n\tenableBuffering(0);\n\tenableModifiedBuffer(0) ;\n\tsetModifiedBufferLength(1000);\n}\n\n/*2022*/\nuint32 last_eip = 0;\nuint32 before_last_eip = 0;\nuint32 last_fault_va = 0;\nuint32 before_last_fault_va = 0;\nint8 num_repeated_fault  = 0;\nextern uint32 sys_calculate_free_frames() ;\n\nstruct Env* last_faulted_env = NULL;\n\nvoid fault_handler(struct Trapframe *tf)\n{\n\t/******************************************************/\n\tuint32 fault_va = rcr2();\n\tstruct Env* cur_env = get_cpu_proc();\n\n\n\tuint32 current_eip = (uint32)tf->tf_eip;\n\n\tif (last_fault_va == fault_va && last_faulted_env == cur_env && last_faulted_env != NULL)\n\t{\n\t    num_repeated_fault++;\n\t    if (num_repeated_fault == 3)\n\t    {\n\t        print_trapframe(tf);\n\t        panic(\"Failed to handle fault! fault @ at va = %x from eip = %x causes va (%x) to be faulted for 3 successive times\\n\",\n\t              before_last_fault_va, before_last_eip, fault_va);\n\t    }\n\t}\n\telse\n\t{\n\t    before_last_fault_va = last_fault_va;\n\t    before_last_eip = last_eip;\n\t    num_repeated_fault = 1;\n\t}\n\n\tlast_eip = current_eip;\n\tlast_fault_va = fault_va;\n\tlast_faulted_env = cur_env;\n\t/******************************************************/\n\t//2017: Check stack overflow for Kernel\n\tint userTrap = 0;\n\tif ((tf->tf_cs & 3) == 3) {\n\t\tuserTrap = 1;\n\t}\n\tif (!userTrap)\n\t{\n\t\tstruct cpu* c = mycpu();\n\t\tif (cur_env && fault_va >= (uint32)cur_env->kstack && fault_va < (uint32)cur_env->kstack + PAGE_SIZE)\n\t\t\tpanic(\"User Kernel Stack: overflow exception!\");\n\t\telse if (fault_va >= (uint32)c->stack && fault_va < (uint32)c->stack + PAGE_SIZE)\n\t\t\tpanic(\"Sched Kernel Stack of CPU #%d: overflow exception!\", c - CPUS);\n#if USE_KHEAP\n\t\tif (fault_va >= KERNEL_HEAP_MAX)\n\t\t\tpanic(\"Kernel: heap overflow exception!\");\n#endif\n\t}\n\t//2017: Check stack underflow for User\n\telse\n\t{\n\t\tif (fault_va >= USTACKTOP && fault_va < USER_TOP)\n\t\t\tpanic(\"User: stack underflow exception!\");\n\t}\n\n\tstruct Env* faulted_env = cur_env;\n\tif (faulted_env == NULL)\n\t{\n\t\tcprintf(\"\\nFaulted VA = %x\\n\", fault_va);\n\t\tprint_trapframe(tf);\n\t\tpanic(\"faulted env == NULL!\");\n\t}\n\n\tif ( (faulted_env->env_page_directory[PDX(fault_va)] & PERM_PRESENT) != PERM_PRESENT)\n\t{\n\t\tfaulted_env->tableFaultsCounter ++ ;\n\t\ttable_fault_handler(faulted_env, fault_va);\n\t}\n\telse\n\t{\n\t\tif (userTrap)\n\t\t{\n\t\t\tif (fault_va >= USER_TOP)\n\t\t\t\tenv_exit();\n\n\t\t\tint perms = pt_get_page_permissions(faulted_env->env_page_directory, fault_va);\n\t\t\tif ((perms & PERM_PRESENT))\n\t\t\t{\n\t\t\t\tif ((tf->tf_err & 0x02) && !(perms & PERM_WRITEABLE))\n\t\t\t\t\tenv_exit();\n\t\t\t}\n\n\t\t\tif (fault_va >= USER_HEAP_START && fault_va < USER_HEAP_MAX)\n\t\t\t{\n\t\t\t\tif (perms == -1 || !(perms & PERM_AVAILABLE))\n\t\t\t\t\tenv_exit();\n\t\t\t}\n\t\t}\n\n\t\tint perms = pt_get_page_permissions(faulted_env->env_page_directory, fault_va);\n\t\tif (perms & PERM_PRESENT)\n\t\t\tpanic(\"Page @va=%x is exist! page fault due to violation of ACCESS RIGHTS\\n\", fault_va) ;\n\n\t\tfaulted_env->pageFaultsCounter ++ ;\n\n\t\tif(isBufferingEnabled())\n\t\t{\n\t\t\t__page_fault_handler_with_buffering(faulted_env, fault_va);\n\t\t}\n\t\telse\n\t\t{\n\t\t\tpage_fault_handler(faulted_env, fault_va);\n\t\t}\n\t}\n\n\ttlbflush();\n}\n\n\n//=========================\n// [2] TABLE FAULT HANDLER:\n//=========================\nvoid table_fault_handler(struct Env * curenv, uint32 fault_va)\n{\n\tuint32* ptr_table;\n#if USE_KHEAP\n\t{\n\t\tptr_table = create_page_table(curenv->env_page_directory, (uint32)fault_va);\n\t}\n#else\n\t{\n\t\t__static_cpt(curenv->env_page_directory, (uint32)fault_va, &ptr_table);\n\t}\n#endif\n}\n\n//=========================\n// [3] PAGE FAULT HANDLER:\n//=========================\nint get_optimal_num_faults(struct WS_List *initWorkingSet, int maxWSSize, struct PageRef_List *pageReferences)\n{\n\tuint32 *current_ws = kmalloc(sizeof(uint32) * maxWSSize);\n\tif (current_ws == NULL) panic(\"get_optimal_num_faults: kheap is full!\");\n\n\tint current_ws_size = 0;\n\tint faults = 0;\n\n\tstruct WorkingSetElement *wse_ptr;\n\tLIST_FOREACH(wse_ptr, initWorkingSet)\n\t{\n\t\tif (current_ws_size < maxWSSize)\n\t\t{\n\t\t\tcurrent_ws[current_ws_size++] = ROUNDDOWN(wse_ptr->virtual_address, PAGE_SIZE);\n\t\t}\n\t}\n\n\tstruct PageRefElement *ref_ptr;\n\tLIST_FOREACH(ref_ptr, pageReferences)\n\t{\n\t\tuint32 current_page_va = ROUNDDOWN(ref_ptr->virtual_address, PAGE_SIZE);\n\t\tint found = 0;\n\n\t\tfor (int i = 0; i < current_ws_size; i++)\n\t\t{\n\t\t\tif (current_ws[i] == current_page_va)\n\t\t\t{\n\t\t\t\tfound = 1;\n\t\t\t\tbreak;\n\t\t\t}\n\t\t}\n\n\t\tif (found) continue;\n\n\t\tfaults++;\n\n\t\tif (current_ws_size < maxWSSize)\n\t\t{\n\t\t\tcurrent_ws[current_ws_size++] = current_page_va;\n\t\t}\n\t\telse\n\t\t{\n\t\t\tint vindex = -1;\n\t\t\tint max_distance = -1;\n\n\t\t\tfor (int i = 0; i < current_ws_size; i++)\n\t\t\t{\n\t\t\t\tint distance = 0;\n\t\t\t\tint caught = 0;\n\t\t\t\tuint32 page_in_memory = current_ws[i];\n\n\t\t\t\tstruct PageRefElement *future_ptr = LIST_NEXT(ref_ptr);\n\n\t\t\t\twhile (future_ptr != NULL)\n\t\t\t\t{\n\t\t\t\t\tdistance++;\n\t\t\t\t\tif (ROUNDDOWN(future_ptr->virtual_address, PAGE_SIZE) == page_in_memory)\n\t\t\t\t\t{\n\t\t\t\t\t\tcaught = 1;\n\t\t\t\t\t\tbreak;\n\t\t\t\t\t}\n\t\t\t\t\tfuture_ptr = LIST_NEXT(future_ptr);\n\t\t\t\t}\n\n\t\t\t\tif (!caught)\n\t\t\t\t{\n\t\t\t\t\tvindex = i;\n\t\t\t\t\tbreak;\n\t\t\t\t}\n\n\t\t\t\tif (distance > max_distance)\n\t\t\t\t{\n\t\t\t\t\tmax_distance = distance;\n\t\t\t\t\tvindex = i;\n\t\t\t\t}\n\t\t\t}\n\t\t\tcurrent_ws[vindex] = current_page_va;\n\t\t}\n\t}\n\n\tkfree(current_ws);\n\treturn faults;\n}\n\n\nvoid page_fault_handler(struct Env * faulted_env, uint32 fault_va)\n{\n#if USE_KHEAP\n\tif (isPageReplacmentAlgorithmOPTIMAL())\n\t{\n\t\tstruct PageRefElement *ptr_ref = kmalloc(sizeof(struct PageRefElement));\n\t\tptr_ref->virtual_address = ROUNDDOWN(fault_va, PAGE_SIZE);\n\t\tLIST_INSERT_TAIL(&(faulted_env->referenceStreamList), ptr_ref);\n\n\n\t\tif (LIST_SIZE(&(faulted_env->ALTWS)) == 0 && LIST_SIZE(&(faulted_env->page_WS_list)) > 0)\n\t\t{\n\t\t\tstruct WorkingSetElement *initial_wse;\n\t\t\tLIST_FOREACH(initial_wse, &(faulted_env->page_WS_list))\n\t\t\t{\n\t\t\t\tpt_set_page_permissions(faulted_env->env_page_directory, initial_wse->virtual_address, 0, PERM_PRESENT);\n\n\t\t\t\tstruct WorkingSetElement *new_wse = kmalloc(sizeof(struct WorkingSetElement));\n\t\t\t\tnew_wse->virtual_address = initial_wse->virtual_address;\n\t\t\t\tnew_wse->time_stamp = 0;\n\t\t\t\tnew_wse->sweeps_counter = 0;\n\t\t\t\tLIST_INSERT_TAIL(&(faulted_env->ALTWS), new_wse);\n\t\t\t}\n\t\t}\n\n\t\tuint32 page_va = ROUNDDOWN(fault_va, PAGE_SIZE);\n\t\tbool foundInWS = 0;\n\t\tstruct WorkingSetElement *wse = NULL;\n\n\t\tLIST_FOREACH(wse, &(faulted_env->ALTWS))\n\t\t{\n\t\t\tif (ROUNDDOWN(wse->virtual_address, PAGE_SIZE) == page_va)\n\t\t\t{\n\t\t\t\tfoundInWS = 1;\n\t\t\t\tbreak;\n\t\t\t}\n\t\t}\n\n\t\tif (foundInWS)\n\t\t{\n\t\t\tpt_set_page_permissions(faulted_env->env_page_directory, page_va, PERM_PRESENT, 0);\n\t\t}\n\t\telse\n\t\t{\n\t\t\tif (LIST_SIZE(&(faulted_env->ALTWS)) >= faulted_env->page_WS_max_size)\n\t\t\t{\n\t\t\t\tstruct WorkingSetElement *elm;\n\t\t\t\twhile ((elm = LIST_FIRST(&(faulted_env->ALTWS))) != NULL)\n\t\t\t\t{\n\t\t\t\t\tpt_set_page_permissions(faulted_env->env_page_directory, elm->virtual_address, 0, PERM_PRESENT);\n\t\t\t\t\tLIST_REMOVE(&(faulted_env->ALTWS), elm);\n\t\t\t\t\tkfree(elm);\n\t\t\t\t}\n\t\t\t}\n\n\t\t\tstruct WorkingSetElement *new_wse = kmalloc(sizeof(struct WorkingSetElement));\n\t\t\tnew_wse->virtual_address = page_va;\n\t\t\tnew_wse->time_stamp = 0;\n\t\t\tnew_wse->sweeps_counter = 0;\n\t\t\tLIST_INSERT_TAIL(&(faulted_env->ALTWS), new_wse);\n\n\t\t\tuint32 *ptr_table = NULL;\n\t\t\tstruct FrameInfo *ptr_fi = get_frame_info(faulted_env->env_page_directory, page_va, &ptr_table);\n\n\t\t\tif (ptr_fi != NULL)\n\t\t\t{\n\t\t\t\tpt_set_page_permissions(faulted_env->env_page_directory, page_va, PERM_PRESENT, 0);\n\t\t\t}\n\t\t\telse\n\t\t\t{\n\t\t\t\tint ret = allocate_frame(&ptr_fi);\n\t\t\t\tif (ret == E_NO_MEM) env_exit();\n\n\t\t\t\tmap_frame(faulted_env->env_page_directory, ptr_fi, page_va, PERM_USER | PERM_WRITEABLE | PERM_PRESENT);\n\n\t\t\t\tret = pf_read_env_page(faulted_env, (void*)page_va);\n\n\t\t\t\tif (ret == E_PAGE_NOT_EXIST_IN_PF)\n\t\t\t\t{\n\t\t\t\t\tif ((page_va >= USTACKBOTTOM && page_va < USTACKTOP) ||\n\t\t\t\t\t\t(page_va >= USER_HEAP_START && page_va < USER_HEAP_MAX))\n\t\t\t\t\t{\n\t\t\t\t\t}\n\t\t\t\t\telse\n\t\t\t\t\t{\n\t\t\t\t\t\tunmap_frame(faulted_env->env_page_directory, page_va);\n\t\t\t\t\t\tenv_exit();\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n\telse\n\t{\n\t\tstruct WorkingSetElement *victimWSElement = NULL;\n\t\tuint32 wsSize = LIST_SIZE(&(faulted_env->page_WS_list));\n\n\t\t// ==================================================================================\n\t\t//                                 PLACEMENT\n\t\t// ==================================================================================\n\t\tif(wsSize < (faulted_env->page_WS_max_size))\n\t\t{\n\t\t\tuint32 page_va = ROUNDDOWN(fault_va, PAGE_SIZE);\n\t\t\tstruct FrameInfo *ptr_frame_info = NULL;\n\n\t\t\tint ret = allocate_frame(&ptr_frame_info);\n\t\t\tif (ret != E_NO_MEM)\n\t\t\t{\n\t\t\t\tmap_frame(faulted_env->env_page_directory, ptr_frame_info, page_va, PERM_USER | PERM_WRITEABLE | PERM_PRESENT);\n\t\t\t}\n\t\t\telse\n\t\t\t{\n\t\t\t\tenv_exit();\n\t\t\t}\n\n\t\t\tret = pf_read_env_page(faulted_env, (void*)page_va);\n\n\t\t\tif (ret == E_PAGE_NOT_EXIST_IN_PF)\n\t\t\t{\n\t\t\t\tif ((page_va >= USTACKBOTTOM && page_va < USTACKTOP) ||\n\t\t\t\t\t(page_va >= USER_HEAP_START && page_va < USER_HEAP_MAX))\n\t\t\t\t{\n\t\t\t\t}\n\t\t\t\telse\n\t\t\t\t{\n\t\t\t\t\tunmap_frame(faulted_env->env_page_directory, page_va);\n\t\t\t\t\tenv_exit();\n\t\t\t\t}\n\t\t\t}\n\n\t\t\tstruct WorkingSetElement *new_ws = env_page_ws_list_create_element(faulted_env, page_va);\n\t\t\tLIST_INSERT_TAIL(&(faulted_env->page_WS_list), new_ws);\n\n\t\t\tif (LIST_SIZE(&(faulted_env->page_WS_list)) == faulted_env->page_WS_max_size)\n\t\t\t{\n\t\t\t\tif (faulted_env->page_last_WS_element == NULL)\n\t\t\t\t{\n\t\t\t\t\tfaulted_env->page_last_WS_element = LIST_FIRST(&(faulted_env->page_WS_list));\n\t\t\t\t}\n\t\t\t}\n\t\t\telse\n\t\t\t{\n\t\t\t\tfaulted_env->page_last_WS_element = NULL;\n\t\t\t}\n\t\t}\n\t\t// ==================================================================================\n\t\t//                         REPLACEMENT (CLOCK ALGORITHM)\n\t\t// ==================================================================================\n\t\telse\n\t\t{\n\t\t\tif (isPageReplacmentAlgorithmCLOCK())\n\t\t\t    {\n\t\t\t        uint32 page_va = ROUNDDOWN(fault_va, PAGE_SIZE);\n\t\t\t        struct WorkingSetElement *curr_element = faulted_env->page_last_WS_element;\n\n\t\t\t        if (curr_element == NULL)\n\t\t\t            curr_element = LIST_FIRST(&(faulted_env->page_WS_list));\n\n\t\t\t        while (1)\n\t\t\t        {\n\t\t\t            uint32 perms = pt_get_page_permissions(faulted_env->env_page_directory,\n\t\t\t                                                   curr_element->virtual_address);\n\n\t\t\t            if (perms & PERM_USED)\n\t\t\t            {\n\t\t\t                pt_set_page_permissions(faulted_env->env_page_directory,\n\t\t\t                                       curr_element->virtual_address, 0, PERM_USED);\n\t\t\t                curr_element = LIST_NEXT(curr_element);\n\t\t\t                if (curr_element == NULL)\n\t\t\t                    curr_element = LIST_FIRST(&(faulted_env->page_WS_list));\n\t\t\t            }\n\t\t\t            else\n\t\t\t            {\n\t\t\t                struct WorkingSetElement *victim = curr_element;\n\t\t\t                uint32 victim_va = victim->virtual_address;\n\n\t\t\t                // 1. Identify the next position for the clock hand\n\t\t\t                struct WorkingSetElement *next_hand = LIST_NEXT(victim);\n\t\t\t                if (next_hand == NULL)\n\t\t\t                    next_hand = LIST_FIRST(&(faulted_env->page_WS_list));\n\n\t\t\t                // 2. Write back to disk if Modified\n\t\t\t                uint32 *ptr_table = NULL;\n\t\t\t                struct FrameInfo *ptr_victim_fi = get_frame_info(faulted_env->env_page_directory,\n\t\t\t                                                                 victim_va, &ptr_table);\n\t\t\t                uint32 victim_perms = pt_get_page_permissions(faulted_env->env_page_directory,\n\t\t\t                                                               victim_va);\n\n\t\t\t                if (victim_perms & PERM_MODIFIED)\n\t\t\t                {\n\t\t\t                    int ret = pf_update_env_page(faulted_env, victim_va, ptr_victim_fi);\n\t\t\t                    if (ret == E_NO_PAGE_FILE_SPACE)\n\t\t\t                        panic(\"ERROR: No Page File Space!\");\n\t\t\t                }\n\n\t\t\t                // 3. Unmaps victim\n\t\t\t                unmap_frame(faulted_env->env_page_directory, victim_va);\n\n\t\t\t                // 4. Allocate and map new page\n\t\t\t                struct FrameInfo *ptr_new_fi = NULL;\n\t\t\t                int ret = allocate_frame(&ptr_new_fi);\n\t\t\t                if (ret == E_NO_MEM)\n\t\t\t                    env_exit();\n\n\t\t\t                map_frame(faulted_env->env_page_directory, ptr_new_fi, page_va,\n\t\t\t                          PERM_USER | PERM_WRITEABLE | PERM_PRESENT);\n\n\t\t\t                ret = pf_read_env_page(faulted_env, (void*)page_va);\n\t\t\t                if (ret == E_PAGE_NOT_EXIST_IN_PF)\n\t\t\t                {\n\t\t\t                    if ((page_va >= USTACKBOTTOM && page_va < USTACKTOP) ||\n\t\t\t                        (page_va >= USER_HEAP_START && page_va < USER_HEAP_MAX))\n\t\t\t                    {\n\t\t\t                    }\n\t\t\t                    else\n\t\t\t                    {\n\t\t\t                        unmap_frame(faulted_env->env_page_directory, page_va);\n\t\t\t                        env_exit();\n\t\t\t                    }\n\t\t\t                }\n\n\n\t\t\t                LIST_REMOVE(&(faulted_env->page_WS_list), victim);\n\n\t\t\t                struct WorkingSetElement *new_ws = env_page_ws_list_create_element(faulted_env, page_va);\n\t\t\t                if (next_hand == LIST_FIRST(&(faulted_env->page_WS_list))) {\n\t\t\t                   LIST_INSERT_TAIL(&(faulted_env->page_WS_list), new_ws);\n\t\t\t                }\n\t\t\t                else {\n\n\t\t\t                    LIST_INSERT_BEFORE(&(faulted_env->page_WS_list), next_hand, new_ws);\n\t\t\t                }\n\n\t\t\t                kfree(victim);\n\t\t\t                faulted_env->page_last_WS_element = next_hand;\n\t\t\t                faulted_env->page_last_WS_element = next_hand;\n\n\t\t\t                break;\n\t\t\t            }\n\t\t\t        }\n\t\t\t}\n\t\t\telse if (isPageReplacmentAlgorithmLRU(PG_REP_LRU_TIME_APPROX))\n\t\t\t{\n\t\t\t\tpanic(\"page_fault_handler().REPLACEMENT is not implemented yet...!!\");\n\t\t\t}\n\t\t\telse if (isPageReplacmentAlgorithmModifiedCLOCK())\n\t\t\t{\n\t\t\t\tpanic(\"page_fault_handler().REPLACEMENT is not implemented yet...!!\");\n\t\t\t}\n\t\t}\n\t}\n#endif\n}\nvoid __page_fault_handler_with_buffering(struct Env * curenv, uint32 fault_va)\n{\n\tpanic(\"this function is not required...!!\");\n}\n"}];
@@ -1181,10 +1312,53 @@ fosSourceFiles.forEach((file,index) => {
 
 const projectSourceInfo = {
   fos: {title:"FOS Operating System — Source Code", subtitle:"Browse the embedded project files without leaving this page.", available:true},
-  "real-estate": {title:"Real Estate Portal System — Source Code", subtitle:"Source preview will appear here when the project files are added to the portfolio.", available:false},
-  train: {title:"Train Reservation System — Source Code", subtitle:"Source preview will appear here when the project files are added to the portfolio.", available:false},
-  exam: {title:"Online Examination System — Source Code", subtitle:"Source preview will appear here when the project files are added to the portfolio.", available:false},
-  heart: {title:"Heart Disease Prediction System — Source Code", subtitle:"Source preview will appear here when the project files are added to the portfolio.", available:false},
+  "real-estate": {
+    title:"Real Estate Portal System — Source Code",
+    subtitle:"All repository files loaded directly from GitHub.",
+    files:[
+      {name:"Admin.cpp", url:"https://raw.githubusercontent.com/Moharidy05/Property-Management-system/main/Admin.cpp"},
+      {name:"Admin.h", url:"https://raw.githubusercontent.com/Moharidy05/Property-Management-system/main/Admin.h"},
+      {name:"Property.cpp", url:"https://raw.githubusercontent.com/Moharidy05/Property-Management-system/main/Property.cpp"},
+      {name:"Property.h", url:"https://raw.githubusercontent.com/Moharidy05/Property-Management-system/main/Property.h"},
+      {name:"Readme.md", url:"https://raw.githubusercontent.com/Moharidy05/Property-Management-system/main/Readme.md"},
+      {name:"RealEstatePortal.cpp", url:"https://raw.githubusercontent.com/Moharidy05/Property-Management-system/main/RealEstatePortal.cpp"},
+      {name:"RealEstatePortal.h", url:"https://raw.githubusercontent.com/Moharidy05/Property-Management-system/main/RealEstatePortal.h"},
+      {name:"User.cpp", url:"https://raw.githubusercontent.com/Moharidy05/Property-Management-system/main/User.cpp"},
+      {name:"User.h", url:"https://raw.githubusercontent.com/Moharidy05/Property-Management-system/main/User.h"},
+      {name:"admins.txt", url:"https://raw.githubusercontent.com/Moharidy05/Property-Management-system/main/admins.txt"},
+      {name:"properties.txt", url:"https://raw.githubusercontent.com/Moharidy05/Property-Management-system/main/properties.txt"},
+      {name:"users.txt", url:"https://raw.githubusercontent.com/Moharidy05/Property-Management-system/main/users.txt"}
+    ]
+  },
+  train: {
+    title:"Train Reservation System — Source Code",
+    subtitle:"All repository files loaded directly from GitHub.",
+    files:[
+      {name:"main.cpp", url:"https://raw.githubusercontent.com/Moharidy05/Railway-Reservation-System/main/main.cpp"},
+      {name:"LoginData.txt", url:"https://raw.githubusercontent.com/Moharidy05/Railway-Reservation-System/main/LoginData.txt"},
+      {name:"UserData.txt", url:"https://raw.githubusercontent.com/Moharidy05/Railway-Reservation-System/main/UserData.txt"},
+      {name:"paymentMethods.txt", url:"https://raw.githubusercontent.com/Moharidy05/Railway-Reservation-System/main/paymentMethods.txt"},
+      {name:"reservedTickets.txt", url:"https://raw.githubusercontent.com/Moharidy05/Railway-Reservation-System/main/reservedTickets.txt"},
+      {name:"ticketsPrices.txt", url:"https://raw.githubusercontent.com/Moharidy05/Railway-Reservation-System/main/ticketsPrices.txt"},
+      {name:"train_schedule.txt", url:"https://raw.githubusercontent.com/Moharidy05/Railway-Reservation-System/main/train_schedule.txt"},
+      {name:"userPayments.txt", url:"https://raw.githubusercontent.com/Moharidy05/Railway-Reservation-System/main/userPayments.txt"}
+    ]
+  },
+  exam: {
+    title:"Online Examination System — Source Code",
+    subtitle:"The supplied GitHub repository is currently unavailable, so its source cannot be embedded until the repository is accessible.",
+    available:false,
+    repoUrl:"https://github.com/Abdelrahman249/Online-Examination-System"
+  },
+  heart: {
+    title:"Heart Disease Prediction System — Source Code",
+    subtitle:"Heart Prediction.py · loaded directly from the project's GitHub repository.",
+    available:true,
+    repoUrl:"https://github.com/Moharidy05/Heart-Disease-Prediction/blob/main/Heart%20Prediction.py",
+    files:[
+      {name:"Heart Prediction.py", url:"https://raw.githubusercontent.com/Moharidy05/Heart-Disease-Prediction/main/Heart%20Prediction.py"}
+    ]
+  },
   event: {title:"Event Scheduling & Management System — Source Code", subtitle:"Source preview will appear here when the project files are added to the portfolio.", available:false},
   sports: {title:"Sports News Website — Source Code", subtitle:"Source preview will appear here when the project files are added to the portfolio.", available:false},
   eog: {
@@ -1193,6 +1367,23 @@ const projectSourceInfo = {
     available:true,
     sourceUrl:"https://raw.githubusercontent.com/Moharidy05/EOG-Signal_Processing/refs/heads/main/main.py",
     fileName:"main.py"
+  },
+  dsp: {
+    title:"Digital Signal Processing — Source Code",
+    subtitle:"All repository files loaded directly from GitHub.",
+    files:[
+      {name:"README.md", url:"https://raw.githubusercontent.com/Moharidy05/Digital-Signal-Processing/main/README.md"},
+      {name:"main.py", url:"https://raw.githubusercontent.com/Moharidy05/Digital-Signal-Processing/main/main.py"},
+      {name:"requirements.txt", url:"https://raw.githubusercontent.com/Moharidy05/Digital-Signal-Processing/main/requirements.txt"}
+    ]
+  },
+  eog: {
+    title:"EOG Signal Processing & Classification — Source Code",
+    subtitle:"All repository files loaded directly from GitHub.",
+    files:[
+      {name:"main.py", url:"https://raw.githubusercontent.com/Moharidy05/EOG-Signal_Processing/main/main.py"},
+      {name:"eye_movement_ml_ready.csv", url:"https://raw.githubusercontent.com/Moharidy05/EOG-Signal_Processing/main/eye_movement_ml_ready.csv"}
+    ]
   }
 };
 
@@ -1204,23 +1395,20 @@ async function openProjectSource(project){
   document.getElementById("codeModalTitle").textContent = info.title;
   document.querySelector(".code-panel-subtitle").textContent = info.subtitle;
 
-  if(info.sourceUrl){
+  const remoteFiles = info.files || (info.sourceUrl ? [{name:info.fileName || "Source", url:info.sourceUrl}] : null);
+  if(remoteFiles){
     codeFiles.style.display = "block";
     codeSource.style.display = "block";
     codeFiles.innerHTML = "";
-    const btn = document.createElement("button");
-    btn.className = "code-file active";
-    btn.type = "button";
-    btn.textContent = info.fileName || "Source";
-    codeFiles.appendChild(btn);
-    codeText.textContent = "// Loading source code...";
-    try{
-      const response = await fetch(info.sourceUrl, {cache:"no-store"});
-      if(!response.ok) throw new Error(`HTTP ${response.status}`);
-      codeText.textContent = await response.text();
-    }catch(error){
-      codeText.textContent = "// Unable to load the source code preview right now.\n// Please use the GitHub button on the project card to open the repository.\n\n// Repository:\n// https://github.com/Moharidy05/EOG-Signal_Processing";
-    }
+    remoteFiles.forEach((file,index) => {
+      const btn = document.createElement("button");
+      btn.className = "code-file" + (index === 0 ? " active" : "");
+      btn.type = "button";
+      btn.textContent = file.name;
+      btn.addEventListener("click", () => loadRemoteSource(file,index));
+      codeFiles.appendChild(btn);
+    });
+    loadRemoteSource(remoteFiles[0],0);
   }else if(info.available){
     codeFiles.style.display = "block";
     codeSource.style.display = "block";
@@ -1237,7 +1425,19 @@ async function openProjectSource(project){
   }else{
     codeFiles.style.display = "none";
     codeSource.style.display = "block";
-    codeText.textContent = "// Source code preview is not embedded for this project yet.\n// The GitHub button on the project card is available for the repository.\n\n// Add the project files to the portfolio to enable the full\n// in-page source browser for this project.";
+    codeText.textContent = "// Source code preview is not available for this project right now.\n// The GitHub button on the project card opens the repository directly.\n\n// Repository:\n// " + (info.repoUrl || "Not provided");
+  }
+}
+
+async function loadRemoteSource(file,index){
+  document.querySelectorAll(".code-file").forEach((btn,i) => btn.classList.toggle("active", i === index));
+  codeText.textContent = "// Loading " + file.name + "...";
+  try{
+    const response = await fetch(file.url, {cache:"no-store"});
+    if(!response.ok) throw new Error(`HTTP ${response.status}`);
+    codeText.textContent = await response.text();
+  }catch(error){
+    codeText.textContent = "// Unable to load this source file right now.\n// Please use the GitHub button on the project card to open the repository.\n\n// Source file:\n// " + file.url;
   }
 }
 
@@ -1252,6 +1452,90 @@ codeClose.addEventListener("click", closeCodeModal);
 codeModal.addEventListener("click", e => { if(e.target === codeModal) closeCodeModal(); });
 document.addEventListener("keydown", e => { if(e.key === "Escape" && codeModal.classList.contains("open")) closeCodeModal(); });
 </script>
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+  const moreBtn = document.getElementById("viewMoreProjects");
+  const lessBtn = document.getElementById("viewLessProjects");
+  const allBtn = document.getElementById("viewAllProjects");
+  const extras = Array.from(document.querySelectorAll("#more-projects .project-extra"));
+  const projectsSection = document.getElementById("projects");
+  const allProjectsModal = document.getElementById("allProjectsModal");
+  const allProjectsGrid = document.getElementById("allProjectsGrid");
+  const allProjectsClose = document.getElementById("allProjectsClose");
+  const allProjectCards = Array.from(document.querySelectorAll("#projects .projects-grid .project"));
+  if(!moreBtn || !lessBtn || !allBtn || !extras.length) return;
 
-</body>
+  let visibleCount = 0;
+  const STEP = 2;
+
+  function renderProjects(){
+    extras.forEach((card, i) => {
+      card.style.display = i < visibleCount ? "block" : "none";
+    });
+    lessBtn.style.display = visibleCount > 0 ? "inline-flex" : "none";
+    moreBtn.style.display = visibleCount < extras.length ? "inline-flex" : "none";
+    allBtn.style.display = visibleCount < extras.length ? "inline-flex" : "none";
+  }
+
+  moreBtn.addEventListener("click", function(){
+    visibleCount = Math.min(visibleCount + STEP, extras.length);
+    renderProjects();
+    const firstNew = extras[Math.max(0, visibleCount - STEP)];
+    if(firstNew) firstNew.scrollIntoView({behavior:"smooth", block:"center"});
+  });
+
+  lessBtn.addEventListener("click", function(){
+    const previousVisibleCount = visibleCount;
+    visibleCount = Math.max(0, visibleCount - STEP);
+    renderProjects();
+    if(visibleCount > 0){
+      // After hiding the last pair, move the viewport to the pair immediately above it.
+      const target = extras[Math.max(0, visibleCount - STEP)];
+      if(target) target.scrollIntoView({behavior:"smooth", block:"center"});
+    }else{
+      const first = document.querySelector("#projects .project");
+      if(first) first.scrollIntoView({behavior:"smooth", block:"center"});
+    }
+  });
+
+  function buildAllProjects(){
+    allProjectsGrid.innerHTML = "";
+    allProjectCards.forEach(card => {
+      const clone = card.cloneNode(true);
+      clone.classList.add("all-project-card");
+      clone.classList.remove("project-extra");
+      clone.style.display = "block";
+      clone.querySelectorAll(".code-viewer-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          closeAllProjects();
+          setTimeout(() => openProjectSource(btn.dataset.codeProject), 120);
+        });
+      });
+      allProjectsGrid.appendChild(clone);
+    });
+  }
+
+  function openAllProjects(){
+    buildAllProjects();
+    allProjectsModal.classList.add("open");
+    allProjectsModal.setAttribute("aria-hidden","false");
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeAllProjects(){
+    allProjectsModal.classList.remove("open");
+    allProjectsModal.setAttribute("aria-hidden","true");
+    if(!codeModal.classList.contains("open")) document.body.style.overflow = "";
+  }
+
+  allBtn.addEventListener("click", openAllProjects);
+  allProjectsClose.addEventListener("click", closeAllProjects);
+  allProjectsModal.addEventListener("click", e => { if(e.target === allProjectsModal) closeAllProjects(); });
+  document.addEventListener("keydown", e => {
+    if(e.key === "Escape" && allProjectsModal.classList.contains("open")) closeAllProjects();
+  });
+
+  renderProjects();
+});
+</script></body>
 </html>
